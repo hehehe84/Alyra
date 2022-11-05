@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="Script.js" defer></script>
+    <title>Behind the scene and deep understanding of what is JS</title>
+</head>
+<body>
+    <h1>Behind the scene, we will see how the language works</h1>
+
+    <p>This is a game changer, really important to get in this theory
+    </p>
+
+    <h2>Overview of JS</h2>
+
+    <p>To master Javascript, we need to see this definition :<br/>
+    <div class="highlightt">Javascript is a High-level, object-oriented, multi-paradigm Programming language.</div>
+        <br/>
+    <div class="highlightt">Javascript is a High-level, prototype-based object-oriented,
+    multi-paradigm, interpreted or just-in-time compiled, dynamic, single-threaded
+    , garbage-collected programming language with first-class functions and a non-blocking
+    event loop concurrency model😂.</div></p>
+
+    <ul id="def">
+        <li>High-level : We don't have to manage ressources in order to create functions, we don't have to declare ressources like in "C" language</li>
+        <li>Garbage-collected : Algorithm inside JS that remove useless variable from our code in order to make it faster</li>
+        <li>Interpreted or just-in-time compiled language : The processor only understand 0-1, JS code is an abstraction translated into 0-1. It happens inside JS engine</li>
+        <li>Multi-paradigm : Javascript can handle multi-paradigm such as Procedural programming(Organising the code in linear way), Object-oriented programming and Functional programming (We will talk about it later)</li>
+        <li>Prototype-based object-oriented : Almost everything in JS is an object except primitive values. But we have a section to discuss about it deeper</li>
+        <li>First-class functions : Functions are treated as regular variables. We can then play with functions andd pass them inside functions/JReturn them from functions,... Exemple : addEventListeners</li>
+        <li>Dynamic : Dynamically typed languaged. We can recall and change the type of variables.</li>
+        <ul> A concurrency model is how the JS engine handle multiple tasks happening at the same time... because Javascript runs in one single thread.
+            <li>Single-threaded : JS do one thing at a time... <br/>
+            What if we have a long running task ? With our single thread, we need a non-blocking behavior.... </li>
+            <li>Non-blocking event loop : Thanks to our event-loop, we can take long running tasks, executes them in the background
+                and puts them in the main thread once they are finished... </li>
+        </ul>
+    </ul>
+    <p>More details in the following !!!</p>
+
+    <h1>Javascript engine and runtime</h1>
+
+    <p>A JA Engine is Computer program that executes JS Code. Every internet Browser has it's own engine.<br/>
+    Any Js engine has a call stack and a heap.
+    <ul>
+        <li>A Call Stack is where our code is executed using some execution context</li>
+        <li>The Heap is where the object are stored using the unstructured memory pool</li>
+    </ul>
+    How the code is executed ? Notion of compilation vs interpretation.
+    <ul>
+        <li>Compilation : Entire code is converted into machine code at once, then written to a binary file that can be executed by a computer.<br/>
+        <strong>Source code</strong>=>Compilation=> <strong>Machine code</strong>=>Execution=><strong>Program running</strong>. (the execution can happpen way after compilation</li>
+        <li>interpretation : Interpreter runs through the source code and executes it line by line.<br/>
+        <strong>Source Code</strong>=>Execution line by line=><strong>Program running</strong> (the execution code still needs to be converted to machine code)</li>
+    </ul>
+    Javascript used to be a purely interpreted language but with low performance. That is no more the case today.<br/><br/>
+    Modern Javascript languqage is new and use the :<br/>
+    <ul>
+        <li>Just-in-Time (JIT) compilation : Entire code is converted into machine code at once, then executed immediately.<br/>
+        Regular ahead of time compilation with no portable file to execute... The execution happens immediately before the program is running</li>
+    </ul></p>
+
+    <p>In the Javascript engine, the code is at first :<br/>
+    PARSED : read the code into data structure call AST (Abstract Syntax tree) It split the code into pieces that are meaningfull to the language (const function,..) stock into the tree.<br/>
+    This tree will be used to generat the machine code. AST is object behind, but we don't have to learn about it.<br/>
+    then, the code is COMPILED and EXEcuted right away (just-in-time compilation).<br/>
+    The engine do this at the beginning to execute the code as fast as possible. Then in the background, the code is being<br/>
+    OPTIMIZED between the execution through the compilation in order to have something that will be perfected after first run. This can be done multiple time and the less optimised code is just swipped.</p>
+
+    <p>The parsing, compilation and optimisation happens in special threads that we can't access from our code. This happens in the JS engine used by our browsers.</p>
+
+    <h2 id="Runtime">Javascript runtime in the browser</h2>
+
+    <p>Javascript runtime is like a big box wich includes all the things that we need in order to use Javascript in the browser.<br/>
+    The heart in JS runtime is a JS Engine. (Without an engine, there is no runtime. <br/>
+    But the interest of using JS is to have access to WEB APIs (DOM, Times, Fetch API,...)<strong>Functionalities provided to the engine, accessible on window object</strong>. Those functionnalities are part of Runtime box<br/>
+    The JS runtime also includes the callBack Queue (callBack functions ready to be executed with an event[clicks, timer, data,...])<br/><br/>
+    The runtime will execute code inbetween those "boxes". <br/>
+    <strong>The Event-Loop</strong> will be the loop between the JS engine and the callback Queue.</p>
+
+    <p>In Node JS, we have the exact same pattern without any APIs. Instead we have C++ Bindings ans thread pool.</p>
+
+
+    <h2 id="callstack">JS code execution in the callStack</h2>
+
+    <p>At the end of the compilation of our code =><br/>
+        The code is ready to be executed :<br/>
+    In the execution, we have the creation of a global execution context (for top-level code [code not inside every functions])<br/>
+    At the beginning, only the code inside functions will be executed (logic cause functions are executed when they are called). Though, we can call a function in the top level code : function()<br/>
+    <br/>
+    const name='Antoine'; is declared<br/>
+    const first = ()=>{
+        inside the function <br/>
+        we have the different things that happens<br/>
+    }; first is declared but the execution context is the environment in wich pieces of JS code will be executed<br/>
+    The code runs inside an execution context.<br/>
+    Exemple : Pizza !<br/>
+    <ul>
+        <li>Pizza : "JS code" Essential but needs other things to be eaten</li>
+        <li>Box : Pizza execution context</li>
+        <li>Cuttelry</li>
+        <li>Receipe</li>
+    </ul>
+    There is always, in one JS project, <strong>ONE</strong> global execution context: A default context, create for code That
+    is not inside any functions (top-level)
+    </p>
+
+    <p>Then we have execution of the top-level Code inside the execution context. We have then the functions that will run waitings for callbacks and methods (Cuttelry)<br/>
+    One execution context per function : For each function call, <strong>a new execution context is created</strong>. That means that everytime we cut our pizza, we have anew box to put it inside. </p>
+
+    <ol>What is inside Execution context ?
+        <li>Variable environment : ([let, const, var] declaration), functions, arguments object</li>
+        <li>Scope chain : consist of references to variables located outside of the current function</li>
+        <li>This keyword</li>
+        All generated during the "creation phase" right before execution.
+    </ol>
+    <p>/!\/!\/!\Execution context belonging to arrow functions do not get their own arguments keyword nor "this" keyword. Instead, they can use the arguments object and the "this" keyword from their closest regular function parent.<br/>
+        We then use external functions with arguments to use them as functions./!\/!\/!\/!\</p>
+
+    <p>Details of functionment with an example :<br/><br/>
+
+        const name = 'Jonas';<br/><br/>
+
+        const first = () => {<br/>
+            let a =1;<br/>
+            const b = second(7,9);<br/>
+            a=a+b;<br/>
+            return a;<br/>
+        };<br/>
+
+        funtion second(x,y){<br/>
+            var c=2;<br/>
+            return c;<br/>
+        }<br/><br/>
+
+        const x = first();<br/><br/>
+
+        Here, the global will contains :<ul>
+            <li><strong>name</strong>'Jonas'</li>
+            <li><strong>first</strong>< functions ></li>
+            <li><strong>second</strong>< functions ></li>
+            <li><strong>x</strong>< unknown > (because, it needs to run first() at first.)</li>
+        Technically, values are only known during executions.
+        </ul>
+        
+        Knowing that the functions are litteraly the code of the functions. The thing is that it is not executed in the Global.
+
+        In the first()<ul>
+            <li>a=1;</li>
+            <li>b=< unknown > (cause it needs to run second() first.)</li>
+        </ul>
+
+        In the second<ul>
+            <li>c=2</li>
+            <li>arguments = [7,9] (Array of passed arguments, available in all "regular" functions(not arrow)</li>
+        </ul>
+    </p>
+
+    <p>The callstack finally come in a "Place" where execution contexts get stacked on top of each other, 
+        to keep track of where we are in the program execution.<br/>
+        Execution context on top of this callstack is the one that is actually running. When it's finished to run, it will be remove from the stack
+        and exection will go back to previous execution context.<br/><br/>
+        Global code will be put on the top of the callstack</p>
+
+    <p>
+        The callstack is a compilation of all the Execution context of the pieces of our code (functions,...).
+        Once a functions return a value in the callstack and is not needed anymore, this function execution context will be pop off the stack !<br/><br/>
+        
+        The callstack is like a recipe of the Javascript Engine ! (or a map that will never lost us)
+
+    </p>
+
+    <div>Execution context contains : A variable environment, a scope chain and a this keyword</div>
+
+    <h1 id="Scopin">Scoping and scope</h1>
+
+    <p><strong>Scoping</strong> : controls how our programs variables are organized and accessed : "Where do variables live ?"<br/>
+    <strong>Lexical scoping</strong> : Scoping controlled by placement of functions and block in the code.<br/><br/>
+    <strong>Scope</strong> is a space or environment in which a certain variable is declared (variable environment in case of functions).
+    There is a global scole, function scope and block scope; </p>
+
+    <div><strong>Scope of a variable</strong> : region of our code where a certain variable can be accessed</div>
+
+    <ul>
+        <li><strong>Global Scope</strong> : Variable declared outside of any functions or block. (Accessible everywhere)</li>
+        <li><strong>Function Scope</strong> : Variables declared inside the functions are only available inside ! (Local scope)</li>
+        <li><strong>Block Scope (ES6)</strong> : Variables are only accessible inside block (block scoped). This applied to <strong>let</strong> and <strong>const</strong> variables.Functions are block scoped only in strict mode.</li>
+    </ul>
+
+    <p><strong>let</strong> and <strong>const</strong> variables are block scoped... And functions also (in strict mode)</p>
+
+
+    <p>All the child scope have access to the content of the parent scope. second scope have access to second and globals scope. But parent scope cannot have access to child variables, 
+        only if the child scope return a result that can be used after that... Child scope can look up but not parent scope.<br/>
+    "${variable}" call a variable that is parent of our scope.</p>
+
+
+    <p>Var is a function scope.<br/>
+     While let and const are block-scoped<br/><br/>
+    
+    Variables are global-variables ! Var is used in a parent scope</p>
+
+    <h2>Difference between scope chain vs callstack ! </h2>
+
+    <table>
+        <th>Common-point </th> <th>Differences</th> <th></th>
+            <tr>
+                <td>GlobalScope = Global Execution context</td>
+                <td>Scopes are = Executions context <br/>Except that they have access to all the variables<br/>
+                    inside the parent execution context</td>
+            </tr>
+            <tr>
+                <td>Scope chain has something to do with the  <br/>order in which functions are written in the code</td>
+                <td>Scope chain has nothing to do with the  <br/>order in which functions are called</td>
+            </tr>
+    </table>
+
+    <h4>Summary :</h4>
+    <p>-Scoping ask "Where do variables live" or "Where can we access a certain variable, and where not ?";<br/>
+    -There are 3 types of scope in Javascript: the global scope, scopes defined by function and scopes defined by blocks;<br/>
+    -Only let and const variables are block-scoped. Variables declared with var end up in the closest function scope;<br/>
+    -In Javascript, we have lexical scoping, so the rules of where can access variables are based on exactly where in the code functions and blocks are written;<br/>
+    -Every scope always have access to all variables from all it's outer scopes. This is the scope chain !<br/>
+    -When a certain variable is not in the current scope, the engine looks up in the scope chain until it finds the variable it's looking for. This is called variable lookup;<br/>
+    -The scope chain is a one-way street: a scope will never have access to the variables of an inner scope;<br/>
+    -The scope chain  in a certain scope is equal to adding together all the variable environments of all the parent scopes;<br/>
+    -The scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!</p>
+
+    <p>You can have 2 times different variables with the same name in different scopes !<br/>
+    That's why we can have different functions with the same parameter name </p>
+
+
+    <h1 id="Hoist">Hoisting in Javascript</h1>
+
+    <ul>An Execution Context always includes 3 parts :
+        <li>A Variable environment</li>
+        <li>A Scope Chain</li>
+        <li>A "this" keyword</li>
+    </ul>
+
+    <h3>Variable environment</h3>
+
+    <p>In javascript, we create variable thanks to the Hoisting <br/>
+    <strong>Hoisting :</strong> Makes some types of variables accessible/usable in the code before they are actually declared.
+    "Variables lifted to the top of their scope".<br/>
+    /!\/!\/!\But, behind the scene/!\/!\/!\<br/>
+    Before execution, the code is scanned for variable declarations, and for each variable, a new property is created in the <strong>Variable environment object.</strong><br/>
+    </p>
+
+    <table>
+        <tbody>
+            <tr>
+                <th> </th>
+                <th>Hoisted ?<br/>👇</th>
+                <th>Initial Value<br/>👇</th>
+                <th>Scope<br/>👇</th> 
+            </tr>
+            <tr>
+                <td>Function Declaration</td>
+                <td> YES </td>
+                <td> Actual function </td>
+                <td> Block (in strict mode) </td>
+            </tr>
+            <tr>
+                <td>"var" variable</td>
+                <td> YES </td>
+                <td> undefined </td>
+                <td> Function </td>
+            </tr>
+            <tr>
+                <td>let and const variables</td>
+                <td> NO </td>
+                <td> < uninitialized >, TDZ <br/> (Temporal Dead Zone) </td>
+                <td> Block </td>
+            </tr>
+            <tr>
+                <td>Function expressions and arrows</td>
+                <td>  </td>
+                <td> Depends if using var or let/const </td>
+                <td>  </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Temporal DEAD ZONE, Let and Const</h3>
+
+    <p>const myName='Antoine';<br/><br/>
+        if (myName==='Antoine'){<br/>
+            console.log(`Antoine is a ${job}`);<br/>
+            const age=2022-1996;<br/>
+            console.log(age);<br/>
+            const job = 'Student';<br/>
+            console.log(x);<br/>
+        }<br/>
+    =>Return an error in the if at first cl =>Cannot accesss 'job' before initialization<br/>
+    =>Last cl =>'x' is not defined...<br/>
+    Why JS have a temporal dead zone ???? In order to avoid and catch errors in order to have better practices<br/>
+    TDZ also exist to makes const variables actually work. We never reasigned "const" !!!</p>
+
+    <h3>Why Hoisting exist at first ???</h3>
+
+    <p>To use functions before the actual declaration;<br/>
+    <strong>Var</strong> Hoisting is just a byproduct (not great but we don't use it in our normal coding life)</p>
+    
+        <div>To conclude, in order to have the best practices :<br/> 
+            -Never use "var", use "const" at maximum and "let" only if i need to change the variable !<br/>
+            -Declare variables at the top of each scope !<br/>
+            -Always declare all the functions first and use them after declaration !
+
+        </div>
+
+    
+    <h1 id="This">The "this" keyword </h1>
+
+    <p>/!\/!\/!\Extremly important/!\/!\/!\<br/>
+    <strong>this keyword/variable</strong> : Special variable that is creates for every execution context(everyfunction).
+    Takes the value of (point to) the "owner" of the function in which the <strong>this</strong> keyword is used.<br/></p>
+    <p><strong>this</strong> is <strong>NOT</strong> static. It depends on how the function is called, and its value is only assigned
+    when the function is <strong>actually called</strong>.</p>
+    <ul>
+        <li>We call a <strong>Method</strong>=>"this" = Object that is calling the method</li>
+        <li><strong>Simple function call</strong> => "this" = undefined (in strict mode, otherwise : it link window in the browser... This is problematic)</li>
+        <li><strong>Arrow function</strong> =>"This" = this of surrounding function (lexical this)... Arrow function does not get their own "this" => the "this" of the surrounding function</li>
+        <li><strong>EventListeners</strong> =>"this" = DOM element that the handler is attached to</li>
+        <li><strong>new, call, apply, bind</strong>=>later </li>
+    </ul>
+    <p>"this" does not point to the function itself, and also NOT the its variable environment</p>
+
+
+    <h1 id="RegvsArr">Regular vs Arrow functions</h1>
+
+    <p>We should never use an arrow function in a method cause it will create errors...<br/>
+    The best is to never use "var" and limitate the use of arrow function to prefere regular one.<br/>
+    To use the "this" keyword in a function inside a method, we should define "this" as another variable declare<br/>
+    <br/>
+    So to understand well and better, <br/>
+    <ul>
+        <li>Regular function : does have a this keyword that refer to the function..</li>
+        <li>Arrow fucntion : does not have a this keyword.. That means that it take the one of the parent function (parental scope)</li>
+    </ul>
+    its important to remember this cause according to the context, arrow or regular fucntion can be only one solution...</p>
+
+
+    <h1>Primitives vs Objects (Primitives vs Reference Types)</h1>
+
+    <ul>Primitives, primitive types
+        <li>Number</li>
+        <li>String</li>
+        <li>Boolean</li>
+        <li>Undefined</li>
+        <li>Null</li>
+        <li>Symbol</li>
+        <li>BigInt</li>
+    </ul>
+    <ul>Objects, reference types
+        <li>Arrays</li>
+        <li>Object literal</li>
+        <li>Functions</li>
+        <li>Others</li>
+    </ul>
+    <p>All our objects are stored in memory heap, while primitives are stored in the call stack<br/>
+    Call stack is ordered and linear in the appeal of primitives(primitives are stored in the execution context),<br/>
+    while the heap is not "linear".<br/>
+    Example:</p>
+    <img src="callstack_heap.jpg" width="700px">
+    <p>Later on, we will have occasions to work on :
+        <ul>
+            <li>Prototypal inheritance</li>
+            <li>Event Loop</li>
+            <li>How the DOM Really works</li>
+        </ul>
+    </p>
+
+    <h1>  Modern JavaScript Section  </h1>
+
+    <h2 id="Arr_Destr">Array destructuring</h2>
+
+    <p>Array destructuring => unpacking values from array and object into smaller variables.<br/>
+        const arr = [3,8,9];<br/>
+        const a= arr[0];<br/>
+        const b= arr[1];<br/>
+        const c= arr[2];<br/>
+
+        const [d,e,f] = arr;<br/>
+        a=d,b=e and c=f. This is destructuring, we don't kill the origibal array, we just assigning other values to it...
+    </p>
+    <p>To switch variables, we can use: <br/>
+        [main, secondary] = [secondary, main]; That is that simple😂<br/>
+    It's also possible, with the exact same principle, to destructure arrays inside arrays !</p>
+
+    <h2>Destructuring Object</h2>
+
+    <p>This is really interesting when we are talking and dealing with API's... When we have complex objects, we can define they
+        elements by their name in the object. Example, we have an object name CAR:<br/>
+        const CAR = {NumberOfSeats:4, Constructor:"Peugeot", Model: "Peugeot 206", ExternalCaracteristics : ['cabosses', 'peinture défoncée', 'Fiante d'oiseau']};<br/>
+        <br/>
+        const {NumberOfSeats, ExternalCaracteristics, Constructor, Model} = CAR<br/><br/>
+        Here, the order of the element that we want to categorize doesn't matter.<br/>
+    </p>
+
+    <p>For nested object, we can have this illustration : <br/>
+        const {friday: {open: o, close}, saturday, thuesday: {open: ooopen, close: ccclose}}=openingHours;<br/>
+        console.log(o, close);<br/>
+        console.log(saturday);<br/>
+        console.log(`for thuesday opening:${ooopen}, closing:${ccclose}`);<br/></p>
+
+
+
+
+    <h2>The spread operator <strong>...array</strong> (unpack values)</h2>
+
+    <p>To expend an array into all it's element.<br/>
+    Direct example : <br/><br/>
+    const arr=[7, 8, 9];<br/><br/>
+
+    const badNewArr = [1,2, arr[0], arr[1],arr[2]];<br/>
+    console.log(badNewArr);<br/><br/>
+
+    const goodNewArr = [1,2, ...arr];   //Here, we have the Use of the spread operator.(...arr)<br/>
+    console.log(goodNewArr);<br/><br/>
+
+    ...array => give a spread of all the element that are inside this array.<br/><br/>
+    We can have a description of all the element in an array with this command : <br/>
+    console.log(...NewArr);         // Will give a series of all the number in this array</p>
+
+    <p>Spread operators takes all element from an array and doesn't create new variables => 
+        We can only use it in places where otherwise, we can only write values separated by commas.
+    </p>
+    <ul>Two important use cases for spread operators:
+        <li>Create Shallow copies of arrays</li>
+        <li>Merge two arrays together</li>
+    </ul>
+    <p>With this tools, almost data-structures are iterable except the objects...<br/>
+    Iterables : Arrays, strings, maps, sets but not objects</p>
+
+
+    <h2>Rest Pattern and Rest Parameters ...const = array (pack of value)</h2>
+
+    <p>It has something in common with the spread operator. It's the reverse<br/>
+    It use the same synthax to collect multiple elements and condense them into an array.<br/>
+    </p>
+    <p>//Spread because on right side of "="<br/>
+        const arr = [1,2,3,4,...[5,6]];<br/><br/>
+        
+        //REST, because of the left side of "="<br/>
+        const [a,b,...others] = [1,2,3,4,5]<br/><br/>
+        
+        console.log(a,b, others);<br/>
+        // => others = [3,4,5]</p>
+    <p>Into an <strong>Object</strong> Example :<br/><br/>
+        const {saturday, ...weekday} = restaurant.openingHours;<br/>
+        console.log(weekday);</p>
+    <p>Into a <strong>Function</strong> Example :<br/><br/>
+        const add = function(...numbers) {<br/>
+          console.log(numbers);<br/>
+        }<br/><br/>
+        add(2,3) //Will return [2,3];<br/>
+        add(5,3,7,2,99)  //Will return [5, 3, 7, 2, 99]</p>
+
+        <p>As the name is underlying : REST is the rest that is not use in first parameters.
+            In objects, it's important to understand that there is no orders in the list of parameters.
+        </p>
+
+        <div>To conclude, Spreads and Rest look the same but work the opposite according to where they are 
+            located
+            <ul>
+                <li>SPREAD is use where we would otherwise write values, separated by comma</li>
+                <li>REST is use where we would otherwise write variable names, separated by commas</li>
+            </ul>
+        </div>
+
+
+
+        <h2 id="Circuting">Short Circuiting (&&, ||) And and Or oprators</h2>
+
+        <p>Those Operators can use any data type, return any data type and do what is called 
+            short-circuting.<br/>
+            Logic operators doesn't return only Boolean values, according if we ask a question or not.
+        </p>
+        <p>In the OR operator, short-circuting will be that if the first value is a truthy value, it
+            will immediatly return the first value. Example :<br/><br/>
+            -console.log(3 || 'Antoine')    => 3<br/>
+            -console.log('Antoine' || 3)    => 'Antoine'<br/><br/>
+            -console.log(''||3); => 3<br/>
+            -console.log(true||0); => true<br/>
+            -console.log(undefined||null); => null<br/><br/>
+
+
+            undefined,'',0, null (Are falsy values)<br/><br/>
+            At he end, if both values are false, it will return the last falsy value
+
+            <br/><strong>Short-circuting</strong> means that the operator will not even take into consideration
+            the second term.<br/><br/>
+
+            With this method, it's possible to replace a ternary operator.
+        </p>
+
+        <p>In th && Operator, the short-circut happens when the result is Falsy. So, it is the absolute
+            contrary than the OR operator. It return the falsy value without taking into consideration the
+            other parameter.<br/>
+            If both parameters are true, the operator will return the last value. ex : <br/><br/>
+            -console.log(3 && 'Antoine')    => Antoine<br/>
+            -console.log('Antoine' && 3)    => 3<br/><br/>
+            -console.log('' && 3); => ' '<br/>
+            -console.log(true && ' '); => ' '<br/>
+            -console.log(undefined && null); => undefined<br/><br/>
+        </p>
+
+        <p>Practical Example :<br/><br/>
+            if (restaurant.orderPizza) {<br/>
+              restaurant.orderPizza('mushrooms', 'spinach');<br/>
+            }<br/><br/>
+            Is equivalent to : <br/><br/>
+            restaurant.orderPizza && restaurant.orderPizza('mushrooms','spinach');</p>
+
+
+
+        <h2>Nullish Coalescing Operator (Operateur de coalescence nulle/Op d'unicité nulle)</h2>
+
+        <p>OR is helping to have a true value in case the first is a falsy value.<br/>
+        For the Nullish Operator, it works exactly the same than the OR operator except that 
+        "0" or "" are not considered as falsy value... That means that only "null" and "undefined"
+        are considered as falsy...<br/>
+        Nullish Values are cut-circuting the system..</p>
+        <p>Example of writting :<br/>
+        If restaurant.numGuests= 0
+        const guestCorrect = restaurant.numGuests ?? 10; => Return 0<br/>
+        More precisely :<br/>
+        <br/>
+        console.log(3 ?? 'Antoine');  //3<br/>
+        console.log('' ?? 3);         //''<br/>
+        console.log(true ?? 0);     //true<br/>
+        console.log(false ?? 0);     //false<br/>
+        console.log(undefined ?? null); //null<br/>
+        console.log(undefined ?? 0 ?? '' ?? 'Hello' ?? 23 ?? null); //0<br/></p>
+
+        <h2>Looping Arrays, The for-of loop</h2>
+
+        <p>For-of loop : <br/>Example:<br/>
+        for (const item of menu) console.log(item); //Will print all item from menu<br/><br/>
+        for (const i of array)  [i is an element of the array].<br/>
+        If we want to index from one element, it's possible by :<br/><br/>
+        for (const item of menu.entries()){<br/>
+          console.log(item);<br/>
+        }<br/><br/>
+        this function will give us the different index of the array + element of the menu
+        </p>
+
+        <p>
+        for (const [i, el] of menu.entries()){<br/>
+          console.log(`${i+1} : ${el}`);<br/>
+        }<br/>
+        menu.entries have 2 output [index, element of the index]
+        </p>
+
+        <h2 id="Enhance">Enhance Object Literals (/Améliorer les objets littéralement)</h2>
+
+        <p>There is 3 ways to enhance literal Objects<ul>
+            <li>We get out of the object an other object, we can call it in the object
+                just by it's name.=> ..., object,
+            </li>
+            <li>Methods (inside object), it's possible to write methodName(parameters,...){}.<br/>
+                Without semicolon inside the bracketsand without the synthax MetodName : Function(parameters,...){;}</li>
+            <li>We can compute property name instead of writing them out manually and literally.<br/>
+            </li>
+        </ul>
+        </p>
+
+        <h2 id="Opt_C">Optional Chaining (_.)</h2>
+
+        <p>
+            The interest is when we want to deal with API's cause API can be a chain of condition.<br/>
+            Imagine, monday is not defined :<br/>
+            // console.log(restaurant.openingHours.mon.open);      //we ask for undefined.open => error cause not possible to open smth that does not exist<br/><br/>
+
+            if(restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);  //No more problems, use the command only if mon is define<br/>
+            /!\ //But problem if restaurant.openingHours doesn't exist... To counterfit this:<br/><br/>
+
+            if(restaurant.openingHours && restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);       <br/>
+            //Same than above BUT... This is really long to do, specially if the length of the chain is really long.<br/>
+            //We have the solution ! The <strong>Optional chaining</strong> <br/><br/>
+
+            //With true Optional chaining, it gives : <br/>
+            console.log(restaurant.openingHours.mon?.open);   //Ask all the property that are before the question mark. otherwise, undefined will be return...<br/><br/>
+            In general, we can put as many question mark (?) as we want in out properties in order to avoid buggs.<br/><br/>
+        </p>
+
+        <p>
+            We can also use optional chaining on methods :<br/>
+            console.log(restaurant.order?.(0,1)??'Method does not exist');  //Will return the result of the method cause it exist<br/>
+            console.log(restaurant.ordercaca?.(0,1)??'Method does not exist');  //Will not return anything cause this method doesn't exist..<br/><br/>
+
+            It is also possible to use this method for arrays.<br/>
+            For example, we can take a non nullish operator and example : <br/>
+            users=[];<br/>
+            console.log(users[0]?.name?? 'User array is empty');<br/><br/>
+        </p>
+
+        <h2 id="Loop_Obj">Looping object /Object Keys, Values, Entries\</h2>
+
+        <p>What are we looping ???<br/>
+        "for of" loop in order to loop over the array.<br/><br/>
+        const properties = Object.keys(openingHours);<br/>
+        let openSTR=`We are open on ${properties.length} days : <br/><br/>
+
+        for (const days of properties){<br/>
+            openSTR += `${days}day, `;<br/>
+        }<br/><br/>
+    
+        We can also loop on property values<br/><br/>
+        const values = Object.values(openingHours);   (here, we obtain the different hours link to the days)<br/></br/>
+        We can loop an Entire object ;<br/>
+        const entries=Object.entries(openingHours);<br/>
+        OOOOR : const odds = Object.values(game.odds);<br/><br/>
+
+        We can loop on Different properties of an object inside an object:<br/>
+        for (const [day, {open, close}] of entries){<br/>
+          console.log(`On ${day}, we open at ${open} and close at ${close}`);<br/>
+        }<br/><br/>
+        Here, it was totally possible to observe that we create 3 variables that
+        are working inside entries that is define above. (days,{open, close}) Will give
+        the different days and their opening/closing hours.
+        </p>
+
+        <h2>Sets</h2>
+
+        <p>A set can hold mixed data types. The set is logging killing the duplicate ex:<br/><br/>
+        const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta', 'Pizza']);<br/>
+        console.log(ordersSet); => Will only return {"Pasta", "Pizza", "Risotto"}<br/>
+        ordersSet.size =>3<br/><br/>
+        Sets are iterables such as arrays. Strings are iterables..<br/><br/>
+        console.log(new Set('Antoine Picot est un beau gosse')); =>Set of 14 that means that there is 14 letters in this example<br/>
+        the size of this set is 14.<br/><br/>
+        console.log(ordersSet.has('Pizza')); => True<br/>
+        console.log(ordersSet.has('Bread')); => False<br/><br/>
+        The set === the number of possibilities. set.size = number of possibilities. <br/><br/>
+        Other method :<br/>
+        ordersSet.add('Garlic bread');<br/>
+        ordersSet.delete('Risotto');<br/> Does exactly what it's written on the set...<br/><br/>
+        In fact, there is no interest at just delete a value from a set... The thing is that if we want to erase something, it's way more logical to 
+        retrieve a value from an array..<br/><br/>
+        const staff=['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];<br/>
+        const arrStaff=[...new Set(staff)]; //=>Will give a new array that have 3 output : 'Waiter', 'Chef', 'Manager'</p>
+        <p>It's nice to know sets exist but they are way less important than Arrays.</p>
+
+
+        <h1>Maps</h1>
+        
+        <p>This is really fundamental to map values in keys</p>
+
+
+
+
+
+</body>
+</html> 

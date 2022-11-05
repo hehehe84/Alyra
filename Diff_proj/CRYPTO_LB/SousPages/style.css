@@ -1,0 +1,30 @@
+body{
+    background-color: #997736;
+    color: cyan;
+    margin-left: 50px;
+    margin-top: 50px;
+    text-align: justify;
+    width: 90%;
+    max-width: 1200px;
+}
+
+
+#logo{
+    display: flex;
+    width: 50%;
+}
+header img{
+    width: 150px;
+}
+
+header{
+    display: flex;
+}
+
+nav, a{
+    color: yellow
+}
+
+#colle{
+    display: flex;
+}

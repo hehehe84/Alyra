@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Fonctions</title>  
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <h1>Travail sur les fonctions</h1>
+
+        <h3>Partie sur les fonctions avec OpenClassroom</h3>
+
+        <p>Les fonctions sont des blocs de codes réutilisable ! Quand on exécute le code, on appelle la fonction.
+            Une fonction à besoin de données (paramètres). Une fonction somme à ainsi besoin de nombres par exemple.<br/>
+            RDV sur le JS pour voir les différentes fonctions !
+        </p>
+
+        <div class="border-frame">
+            <h2>Histoire de voir</h2>
+            <p id="info">Average Rating :<span id="score1"></span></p>
+        </div>
+        <div class="border-frame">
+            <h2>Histoire de voir 2</h2>
+            <p id="info2">Average Rating :<span id="score2"></span></p>
+        </div>
+        <div class="border-frame">
+            <h2>Histoire de voir 3</h2>
+            <p id="info3">Average Rating :<span id="score3"></span></p>
+        </div>
+
+
+        <div id="Test">
+
+        <h1>Parlons maintenant des méthodes d'instances !</h1>
+
+            <p>Une méthode d'instance est une fonction associées à une classe et qui s'opère à l'intérieurxde chaque instance de cette classe.</p>
+            <p>Pour se faire, nous créons une classe : "bankAccount" que nous manipulerons pour rendre celà visuel.</p>
+            <p>Il faut penser qu'un objet est un tyoe de référence, il est toujour possubel d'apporter des modification à une instance.
+            La partie constante est une référence à cette instance. La méthode ligne 92 utlise le mot clé "this" pour accéder à la "balance".<br/>
+            
+            <strong>/!\Dans le corps d'une classe, le mot clé this fait référence à l'instance créée de la classe. 
+                Dans cet exemple, il fait référence à "newAccount"./!\</strong></p>
+
+        <button id="refresh">Check ratings</button>
+        
+        </div>
+        
+        <h1 id="MethStat">Les méthodes statiques :</h1>
+        <p>
+            La méthode statique n'est pas liée à une instance en particulier de la classe mais à la classe elle-même.<br/>
+            On l'utilise pour créer des méthodes utilitaires ("helper"). Exemple : l'objet "Math". RDV Ligne 232<br/><br/>
+            Ces fonctionnalités pourraient être des fonctions mais elles utilisent des classes statiques que l'on peut regrouper par catégories ou type.
+        </p>
+
+        <p>
+            Ainsi, nous avons vu Deux méthodes :<br/></p>
+        <ul>
+            <li>les méthodes d'instance, qui agissent sur les instances individuelles d'une classe ;</li>
+            <li>les méthodes statiques, qui ne s'appuient pas sur une instance d'une classe.</li>
+        </ul>
+
+        <h1 id="Regle">Règles pour faire des fonctions propres !</h1>
+        <p>Il est important d'écrire une fonction propre pour trouver facilement les choses que l'on veut dans notre code.
+            "Toujours coder en sachant que la personne qui va nous relire est un psychopathe sachant ou on vit."<br/>
+            Règles d'une fonction propre :</p>
+        <ul>
+            <li>Ne pas se répéter dans le code (DRY : Don't Repeat Yourself) ! Une répétition => Une fonction appelable plus facilement. EX ligne 270</li>
+            <li>Bien nommer sa fonction pour décrire ce qu'elle fait ! Comme ça tout est bien littéral. (Ligne 385)</li>
+            <li>Penser à laisser des commentaires. Un bon code est un code commenté pour clarifier quelque chose de non évident. J'ai utilisé l'exemple précédent pour montrer ce qu'est un bon commentaire.</li>
+            <li>Ecrire avec style avec des conventions : 
+                <ul>
+                    <li>les fonctions sont écrites en "camel case" minuscule ("getWordCount" ou "numberOfCats")</li>
+                    <li>les noms de classes sont écrites en "camel case" majuscule ("PremiumAccount" ou "SpecialGuest")</li>
+                    <li>Le choix de nom est primordiale, il ne doit pas être raccourcis pour faciliter la lecture.</li>
+                    <li>les conventions ne sont pas obligatoires mais facilitent la lecture. Ainsi la fonction "comptage de lettre peut devenir tout à fait obscure : ligne 448</li>
+                </ul>
+            </li>
+            <li>Mise en forme du code :
+                <ul>
+                    <li>Lise en retrait à l'aide de l'indentation</li>
+                    <li>Espacement entre les lignes et les fonctions pour faire comprendre que pas tout n'est à la suite.</li>
+                    <li>Positionnement des accolades ex ligne 459</li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>En passant : parseFloat(XXX).toFixed(2);<br/>
+        Va retourner l'arrondi de XXX à 10^-2 près</p>
+
+        <h1>Tester une Fonction !</h1>
+
+        <p>L'intérêt de tester les fonction est de s'assurer de l'exactitude du code même !
+            A l'aide de structures de test descend, nous nous assurons de l'exactitude du code au dur et à mesure.<br/>
+            Il existe ainsi 3 types de test :
+        </p>
+        <ul>
+            <li>Création de Test Unitaires : vérifient des unités individuelles (en général des fonctions uniques ou des classes) 
+                en leur fournissant une entrée et en s'assurant qu'elles donnent la sortie attendue. Ligne 482 (60-80% du temps)</li>
+            <li>Les tests d'intégrations : Vérification des multiples fonctions ou classes pour s'assurer qu'elles peuvent travailler ensemble.
+                Parfois, l'intégration de deux bonnes fonctions dans un code vont "s'empétrer" l'une dans l'autre, il faut donc s'assurer le la "symbiose"
+            </li>
+            <li>Les tests fonctionnels : Ont pour intérêts de vérifier différents scénarios complexes en contexte. Pour se faire, nous utilisons
+                des applications dédiés.
+            </li>
+        </ul>
+
+        <h1 id="DebogetEx">Déboguer une fonction !</h1>
+
+        <h2>Afficher la console </h2>
+        <p>Pour visualise, nous utilisons une version beuggé d'un code précédent a la ligne 550.<br/>
+            L'utilisation de la console convient bien dans les cas simples et isolés comme celui-ci, 
+            mais dans les projets plus complexes, ce serait beaucoup plus difficile et plus chronophage. 
+            Dans ce cas, il faut des armes plus puissantes.</p>
+
+        <p>Apprendre à maîtriser des outils plus développés aide à gagner du temps par rapport à l'affichage console.</p>
+
+        <h2>Outils pour développeur</h2>
+
+        <p>En développement WEB, les navigateurs nous offrent des systèmes appelés <stong>Points d'arrêts pas-à-pas</strong>
+        Dès que ce point d'arrêt est atteint, le navigateur met l'exécution du code en pause.<br/>
+        Ainsi, nous pouvons parcourir l'éxecution ligne après ligne et ignorer certains morceaux de code pour voir comment va réagir l'appli. Merci aussi à VSC d'avoir ce déboggage :)</p>
+
+        <h2>Parler à haute voix</h2>
+        <p>Débogguer en parlant à moi-même, en expliquant mes problèmes et en tentant de parler en résolvant le tout.</p>
+
+        <h2>Utiliser les console.log</h2>
+        <p>Exemple :</p>
+
+        <h4>Convertir les années en mois</h4>
+            <input id="annee" type="text" placeholder="entrez nombre d'années">
+            <input id="bouton" type="button" value="Convertir">
+        <h4 id="message"></h4>
+
+        <p>Dans cet exemple nous avions initialement, params[12] et on observait dans la console que params[12] = 10. ICI, nous avons changer les paramètres de params à params[8]=12 car Params est un tableau décroissant de 20 à 1. 
+            On choisira donc cette valeur pour afficher le bon nombre d'année.</p>
+
+        <p><mark> Il ne faut pas avoir peur de faire des console.log pour avoir une vision plus large de la logique, mais attention à ne pas oublier de supprimer ces lignes de votre code avant une mise en ligne.</mark></p>
+
+        <h1 id="RecFCT">Récursivité : Appel de fonctions à l'intérieur d'elles même.</h1>
+
+        <p>On peut faire appel à de la récursivité pour accomplir une tâche qui a besoin de faire appelle à la fonctio
+            
+        <p>Exemple avec la recherche binaire ligne : 620. On voit dans celle-ci qu'il est impératif d'utiliser un base case.<br/>
+        Un élément aidant à finir la récursivité si aucun élément n'est trouvé. En effet, si aucun baseCase n'existe alors l'algorithme peut se trouver dans une boucle infini.</p>    
+
+        <P>Il est aussi important de pratiquer d'autres exercices tels que : merge sort, index sort, tree traversal. Ces exercices font aussi appelle à la récursivité.</P>
+
+        <h3>Entraînement avec la factorielle</h3>
+
+        <h4>Calcul de la factorielle :</h4>
+
+        <input id="number2" type="text" placeholder="Entrez un nombre">
+        <input id="bouton2" type="button" value="calculer">
+        <h4 id="message2"></h4>
+
+    </body>
+</html>

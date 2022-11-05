@@ -1,0 +1,19 @@
+body{
+    background-color: #222222;
+    color: aliceblue;
+}
+
+header{
+    display: flex;
+    position: relative;
+}
+
+button:header{
+    position: top-right;
+}
+
+main{
+    display: flex;
+
+    flex-wrap: wrap;
+}

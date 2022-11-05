@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="Script.js" defer></script>
+    <title>The Basics !</title>
+</head>
+<body>
+    <h1>We start again but in English !</h1>
+
+    <h2>Javascript :</h2>
+
+    <p>High level object-oriented Multi-Paradigm Programming language :<br/>
+     High-level => We don't care about some stuff to orientate the computer <br/>
+    Object-oriented => Based on object to store most kind of data<br/>
+    Multi-Paradigm => We can use multiple styles of programming. </p>
+
+    <p>Pour l'instant, nous nous basons uniquement sur le Front-end !</p>
+
+    <h1>We will talk about Values and Variables </h1>
+
+    <p>typeof XXX => Donne le type de XXX</p>
+
+    <p>Value = piece of data<br/>
+    'Jonas' = Value <br/>
+    We can store Values inside Variables.
+    let firstName ="Jonas"; => Nous créons une variable.<br/><br/>
+
+    let XXX ou var XXX=>We don't have to declare the variable, string, number or boolean<br/>
+    we can declare it later ex : XXX = 45. Then, XXX=45<br/>
+    let is limited at a block, scope, statement, expression. Var is defining a variable 
+    globally. <br/>We prefer declare empty variable with let and also variable that are 
+    going to change later<br/><br/>
+
+    It is not possible to modify a constant. ex : <br/>
+    const ZZZ = 56;<br/>
+    ZZZ = 67; => Return an error<br/><br/>
+ 
+    You cannot start a variable with a number or with a special token inside except "$""_" and
+    special word, for example "function", "new", furthermore, never call a variable "name" or "Person"
+    that makes a mistake;<br/> <br/><br/>
+
+    We will try in the future to use only "const" and "let". We will avoir "Var"
+       
+    </p>
+
+
+
+    <h1 id="DT">Data Types</h1>
+
+    <h4>Object and primitives</h4>
+
+    <p>Primitive Data types :<ul>
+        <li>Numbers (always floatings) ex : let age=23;</li>
+        <li>Strings (sequences of characters) ex : let firstName='Jonas';</li>
+        <li>Boolean (Logical type that is true or false) ex : letFullAge = true;</li>
+        <li>Undefined : value take by a variable that is not yet defined ('empty value') ex : let children;</li>
+        <li>Null : Also means 'empty Value'</li>
+        <li>Symbol : Value unique and cannot be changed</li>
+        <li>BigInt : Larger integers than Number type can hold</li>
+    </ul>
+    <br/>Javascript as an automatic determination of the value of the variable.<br/>
+    Value has type, not the Variable;</p>
+
+    <p>value number : 3.8<br/>
+    Value string : "YYH"<br/><br/>
+
+    Il est possible de changer la valeur d'une variable ex:<br/><br/>
+    let myVar=true;<br/>
+    console.log(myVar);<br/>
+    myVar='coucou';<br/>
+    console.log(myVar);<br/><br/></p>
+
+   <p>\n\ = sauter une ligne dans la console or use ``</p>
+
+
+   <h1 id="Boo">Boolean</h1>
+
+    <p>When an object is define(XX), Boolean(XX) =True, otherwise it's false.<br/>
+    Boolean(0)=Boolean('')=False; Falsy value = '', 0, undefined, null, NaN<br/>
+    Boolean({})=True</p>
+
+
+    <h1>==Vs===  Or != vs !==</h1>
+
+    <p>=== Is value + type + Nature ex:<br/>
+    18===18 true<br/>
+    18==="18" false<br/>
+    '18'==18 true<br/><br/>
+    Sigma rule : avoid at maximum "=="(loose) and do a maximum "==="(strict)</p>
+
+    <h1>Prompt :</h1>
+
+    <p>Pour afficher la demande d'une valeur, nous allons demander à l'utilisateur à l'aide
+        du JS suivant : prompt("What's your favourite number ???"). That we will store in a constante
+    </p>
+
+
+    <h1>Logique Booléenne</h1>
+
+    <p>&& and ||<br/><br/>
+    if A is true, !A (not A) is false and invert</p>
+
+
+    <h1>Switch statement</h1>
+
+    <p>compare a value to multiple others...</p>
+    <p>We code a switch :<br/><br/>
+        const Value=3<br/>
+        Switch(Value){<br/>
+            case '1':<br/>
+                console.log('Value = 1');<br/>
+                break;<br/>
+            case '2':<br/>
+                console.log('Value = 2');<br/>
+                break;<br/>
+            case '3':<br/>
+                console.log('Value = 3');<br/>
+                break;<br/>
+            case '4':<br/>
+            case '5':<br/>
+            case '6':<br/>
+            case '7':<br/>
+                console.log('Value = 4');<br/>
+                break;<br/>
+            default:<br/>
+                console.log('None of the values are correct/valid...')<br/>
+        }<br/><br/>
+
+        Will show us :  Value = 3
+
+    </p>
+
+    <h1>Difference between expessions and Statement</h1>
+
+    <p>3+4,(true&&false&&!false) or 17282 are expression cause it produce a value<br/>
+    Statement =series of action in a program :<br/>
+    if(23>10){<br/>
+        const str = <strong>'23 is bigger'</strong>;(an expression)<br/>
+    } <br/><br/>
+    A statement doesn't really produce a value, it gives actions.</p>
+
+    <p>We don't include statement inside ${XXX}, inside an expression !</p>
+
+
+    <h1>The conditional Operator</h1>
+
+    <p>Write something in the same pattern than the if/else statement</p>
+
+    <p>Exemple :<br/>Const X=number;<br/>
+    number>=NUMBER2 ? console.log(first_condition) : console.log(!first_condition);<br/>
+    Conditional operator is writting if/else statement in one line.<br/>
+    ternary operator cause it has 3 parts (condition, if part, else part).
+
+    It's important to have a more readable code<br/><br/>
+    Illustration of the power : "console.log(`I like to drink ${age>=18 ?'Wine' : 'Water'}`);"<br/><br/>
+    
+    Ternary operator is perfect for a quick if/else statement.</p>
+
+
+    <h1>Let's talk a bit about the versions of JS...</h1>
+
+    <p>It's really important to understand modern JS (ES6) to look at old one (ES5).</p>
+
+    <h1 id="bigFunc">Fundamentals About the functions...</h1>
+
+    <h1>Strict mode</h1>
+
+    <p>In the first statement in the script : 'use strict';<br/>
+    Always at the beginning (for more secure code, to avoid introduction of bugs.<br/>
+    It shows the bugs...</p>
+
+
+    <h1>Functions :</h1>
+
+    <p>A function has interest when it's about use a certain material at
+        different moment of the code...<br/>
+        Calling/Running/invoking a function (the terms use to call the fact
+        of calling a function)
+    </p>
+    <p>function fonction1(paramètre1, Variable2)<br/><br/>
+    fonction(x, y) => a return but nothing is save. to save, we need to do :<br/>
+    const VarFonct = fonction(x, y)</p>
+    <p>Don't repeat yourself, just make it DRY => Create as many functions as possible.<br/>
+    console.log('xxx') is a function for example, also : Number('...') is a function,...</p>
+
+
+    <h1 id="FuncDecExp">Function declaration vs Expression !!!</h1>
+
+    <p>Function declaration = Function exemple1(){}; Exemple :<br/><br/>
+        function calcAge1(birthYear){<br/>
+            return 2022-birthYear;<br/>
+        }<br/><br/>
+        Expression : const xx = Function(){} ; Exemple :<br/><br/>
+        const calcAge2 = function(birthYear) {<br/>
+            return 2022-birthYear;<br/>
+        }<br/><br/>
+
+        In JS, expressions produce values. Then In JS, functions are just value
+        (then we can store in into variables).
+    </p>
+
+    <p><strong>So, in fact, the big difference between both is that we can call
+        function declaration before they are defined !!!!
+    </strong><br/><br/>
+    The preference come most of the time according to personal opinion and also to 
+    the necessity of the code sometimes</p>
+
+    <h1 id="ArrFunc">Arrow functions !</h1>
+
+    <p>
+        Simple form of function expression shorter to write... Exemple :<br/><br/>
+        const calcAge4 = birthYear => 2037-birthYear; <br/>
+        calcAge4(1994);<br/><br/>
+        (We can see that we store the expression in a variable.)<br/>
+        Another example : <br/><br/>
+        const coucou = xx =>{<br/>
+            different type of code...<br/>
+        }<br/><br/><br/>
+
+        Arrow Functions doesn't get a keyword...  It's better for now to use normal functions.
+
+    </p>
+
+
+    <h1>Functions calling out Other functions</h1>
+
+    <p>Importance is to lower the complexity of functions...</p>
+
+
+    <p>To conclude, we have 3 types of functions :
+        <ul>
+            <li>Function declaration : can be used before it's declared</li>
+            <li>Function expression : Essentially a function value stored in a variable</li>
+            <li>Arrow function : Great for quick one-line functions, has no "this" keyword</li>
+        </ul>
+    </p>
+
+    <P>Anatomy of functions :<br/><br/>
+        function functionName(Parameters[inputs]){<br/>
+            Function Body (block of code that process Datas)<br/>
+            Return statement : output value from the function and terminate execution. (Return stop the function)<br/>           
+        }<br/><br/>
+        const functionName(arguments)
+
+
+    </P>
+
+    <h1 id="Array">Data structures and arrays</h1>
+    
+    <p>Programming is storing and work on datas.</p>
+    <p>How to declare arrays ? <br/>
+    const friends=['Michael','Steven','Peter','Pierre','Paul','Jacques'];//String array<br/>
+    const Yearss= new Array(1897, 657, 1994, 2000);   //With array function<br/>
+    const Yearss2=[1897, 657, 1994, 2000];<br/><br/>
+    Calculate the number of element in an array =><br/>
+    array.length<br/><br/>
+    To mutate a value, it's possible to just chage the place ex :<br/>
+    friends[3]='Jay' => Pierre will be change by Jay.<br/>
+    <strong>only primitive value are immutable, not secondaries</strong>. It's not possible te re-declare
+    the array tho
+    </p>
+    <h1>Basic operations on arrays</h1>
+
+    <p>-array.push(an element); => We add this element at the end of the array.<br/>
+        const xx = array.push(an element) =>give the length of the new array<br/><br/>
+        -array.unshift(an element); => add an element at the beginning of the array.<br/>
+        const xx = array.unshift(an element) =>give the length of the new array<br/><br/>
+        -array.pop(); => Remove the last element<br/>
+        const xx = array.pop(); => give the element that is remove;<br/><br/>
+        -array.shift(); =>Remove the first element of the array.<br/>
+        const xx = array.shift(); => give the remove element. </p>
+
+    <p>Array.indexOf('anElementInsideTheArray'); => The place in the array<br/><br/>
+    array.include('anElement'); => Will return boolean value that says true if the element is in the array and false if it's not.<br/>
+    Thx to this method, we can write some conditionals...<br/><br/>
+    </p>
+
+
+    <h1 id="Obj">Objects !!!</h1>
+
+    <p>In JS, we can give names in our arrays thx to the Object.<br/>
+    Example creation of object :<br/><br/>
+    const newArray = {<br/>
+        firstName : 'Antoine',<br/>
+        lastName : 'Picot',<br/>
+        age : 2022-1996,<br/>
+        job : 'Student',<br/>
+        friends : ['Michel','Perrine','Thibaut', 'Victor']<br/>
+    };<br/><br/>
+    <strong>We should then use array for order data and object for unstructured data.</strong> </p>
+
+    <h1>How to extract Datas from Object ?</h1>
+
+    <h3>With Dot (.) expression</h3>
+    <p>console.log(ourArray.structure); => Nous donne l'élément correspondant à "structure".</p>
+
+    <h3>with Brackets ([])</h3>
+    <p>Console.log(ourArray['structure']); => Nous donne l'élément correspondant à "structure.</p>
+    <p>Bracket can be really powerfull. Let's take an example where "newArray" store the value : firstName and lastName inside...<br/><br/>
+        const nameKey = 'Name';<br/>
+        console.log(newArray['first'+nameKey],newArray['last'+nameKey]);<br/>
+    <br/>This notation cannot be find in <strong>Dot</strong> notation but the name has to be a string...</p>
+
+    <div>Dot notation looks cleaner and is to previliged if we want to code normally. Otherwise, 
+        in example such as above, if we have repetitions in the name of variables inside the objects,
+        we are forced to use the "bracket" notations.<br/>
+        list.const => Error cause "." notation is used for an object. <br/>
+        list['const']=> Valid cause [brackets] are used to create an object.<br/>
+    </div>
+
+    <h1>Objects Methods</h1>
+
+    <p>We can store objects inside objects. But we can also add functions to objects. Example :<br/<br/>
+        const Jonas2 = {<br/>
+            firstName : 'Jonas',<br/>
+            lastName : 'Schmedtman',<br/>
+            birthYear : 1991,
+            numberOfFriends : 3,<br/>
+            friends : ['Michel','Perrine','Thibaut', 'Victor'],<br/>
+            hasDriversLicense : true,<br/><br/>
+        
+            calcAgeEE : function(){     //Cause a function produce a value; calCageEE is a property of Jonas object.<br/>
+                return 2022-this.birthYear;          //CalcAge : Method in fact<br/>
+            }                                   //Function value<br/>
+        }<br/><br/>
+    We can call the calcAgeEE property using th following lines :<br/>
+    console.log(Jonas2.calcAgeEE(1991));<br/>
+    console.log(Jonas2['calcAgeEE'](1991));<br/><br/>
+    Don't repeat yourself inside the code !!!! The goal is at that time to use function inside
+    the principal object with the word this. <br/>
+    (Instead of calling Jonas2.birthYear, we call this.birthYear !). This.xxx help if we change the
+    name of our list !<br/><br/>
+    In order to store the value, we have to call at least one the function. ONCE IT'S done, it's possible
+    to call the object that is create !<br/>
+    </p>
+
+    <h1 id="For">Iteration, "for" loop !</h1>
+
+    <p>For loop keeps running while condition is TRUE !<br/>
+        for (let i =1; i<=10, i++)      <br/>
+    Here, we have a counter starting from 1 going ++(+1) each repetition and will keep going
+    until it reach the number 10 include (<<strong>=</strong>10)<br/><br/>
+    It's important to consider that our code doesn't have to be repetitive, in order to do
+    this, we have to use a "for" loop...</p>
+
+    <h1>Looping Backward and loop in loops</h1>
+
+    <p>Example of looping Backward :<br/><br/>
+        for (let i=Antoinee3.length-1; i>=0;i--){<br/>
+            console.log(Antoinee3[i]);<br/>
+        }<br/><br/>
+    Here, we have initialisation of our loop : i = length of our arra ; while i>=0, i -= 1;<br/>
+    We have all our element going backward</p>
+
+    <h1 id="While">The While loop</h1>
+
+    <p>While(condition){<br/>
+        Code is executing !<br/>
+        }<br/><br/>
+    A while loop shouldn't have a counter, and be use only when we don't need
+    a counter...</p>
+
+    <h1 id="DOM">DOM Manipulation</h1>
+
+    <h2>Key escape on keyBoard events</h2>
+
+    <p><br/>
+        document.addEventListener('keydown', function(e){<br/>
+            console.log(`A key ${e} was pressed`)<br/><br/>
+        
+        });<br/><br/>
+    Hey JS, plz call this function that i define here, each time that someone press a keydown.<br/>
+    plus, when you do so, pass in the event object as an argument. <br/>
+    => On clique sur une touche, dès que l'on fait ça, on demande à JS d'appeler la fonction.
+    </p>
+
+    <p>document.addEventListener('keydown', function(e){<br/>
+        console.log(e.key);<br/>
+    });<br/><br/>
+
+    Will put the key that we pressed on the console.</p>
+
+
+
+
+
+</body>
+</html>

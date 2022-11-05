@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>Git et Github !</h1>
+
+<h2>Intro à Git et Github !</h2>
+
+<h3>Contrôle de Version :</h3>
+
+<ul>
+    <li>Contrôle, conserve un historique des modifications pour revenir en arrière le cas échéant</li>
+    <li>versioning qui va déterminer <ul>
+        <li>les modifications de chaques fichiers</li>
+        <li>Pourquoi elle a lieu</li>
+        <li>et par qui</li>
+    </ul></li>
+</ul>
+
+<h3>Git/GitHub</h3>
+
+<h5>Différence dépôt local/ Dépôt distant</h5>
+
+<p>
+    <strong>Dépôt :</strong> dossier qui conserve un historique des versions et des modifications d’un projet. Il peut être local ou distant.
+    <strong>Requesitory</strong> in english !
+    <ul>
+        <li><strong>Dépôt local :</strong> entrepôt virtuel de votre projet. Il vous permet d'enregistrer les versions de votre code et d'y accéder au besoin.<br/>
+            On réalise une version, que l'on va petit à petit améliorer. Ces versions sont stockées au fur et à mesure dans le dépôt local.</li>
+        <li><strong>Dépôt distant :</strong> Il permet de stocker les différentes versions de votre code afin de garder un historique délocalisé, c'est-à-dire un historique hébergé sur Internet ou sur un réseau. </li>
+    </ul>
+</p>
+
+<h2>Travailler sur un dépôt local</h2>
+
+<img src="16334576106761_image27.png" width="600px">
+<p><ul>
+    <li><strong>Working directory :</strong> dossier du projet sur votre ordinateur.</li>
+    <li><strong>Stage ou index :</strong> intermédiaire entre le working directory et le repository. Elle représente tous les fichiers modifiés que vous souhaitez voir apparaître dans votre prochaine version de code.</li>
+    <li><strong>Repository : </strong>Lorsque l’on crée de nouvelles versions d’un projet, c’est dans cette zone qu’elles sont stockées.</li>
+</ul></p>
+
+<h3>Initialiser git :</h3>
+
+<p>
+    Configurer son id<br/>
+$ git config --global user.name "John Doe" <br/>
+$ git config --global user.email johndoe@example.com<br/><br/>
+configurer les couleurs :<br/>
+$ git config --global color.diff auto <br/>
+$ git config --global color.status auto <br/>
+$ git config --global color.branch auto<br/><br/>
+configurer l'éditeur :<br/>
+$ git config --global core.editor notepad++ <br/>
+$ git config --global merge.tool vimdiff<br/><br/>
+
+Créer le dépôt local :<br/>
+johndoe ~(premiere ligne gitBash sans considérer une entrée sur le terminal)<br/>
+$ cd Documents/PremierProjet<br/>
+johndoe ~/Documents/PremierProjet<br/>
+$ git init<br/>
+Initialized empty Git repository in c:/users/JohnDoe/Documents/PremierProjet/
+</p>
+
+<p>Initialiser un dépôt : <br/>
+    c:/users/JohnDoe/Documents/PremierProjet/ = Notre dossier destination quand nous entrons la commande<br/>
+<strong>pwd</strong> !<br/>
+Pour indexer des fichiers créent à cette occasion, dans notre dossier, nous pouvons utiliser les lignes suivantes ; <br/>
+$ git add index.html styles.css<br/><br/>
+Créer une nouvelle version avec la commande git commit :<br/>
+
+<br/>Pour archiver, nous entrons la commande : <br/>
+git commit -m “Ajout des fichiers html et css de base” (m commme message..).=><br/>
+Vos modifications sont maintenant enregistrées avec la description “Ajout des fichiers html et css de base”.<br/>
+</p>
+<p>Maintenant que nous avons créer notre Requesitory, nous allons l'importer sur gitHub...<br/>
+Pour se faire, nous pouvons aller sur GitHub => Your Requesitory, aller sur le requesitory demandé, copier le lien et rentrer dans Bash la commande suivante :<br/>
+git remote add origin https://github.com/EtudiantOC/OpenclassroomsProject.git<br/>
+git branch -M main<br/>
+git push -u origin main<br/>
+
+</p>
+<h5>Systèmes de branches</h5>
+
+
+<p>Modifications sans affecter le projet :<br/>
+    3 Phases de gestion de versions :<br/>
+    <ul>
+        <li><strong>Untracked :</strong> On peut aborder des modifications en modifiant du code</li>
+        <li><strong>Staging : </strong>On choisit ce que l'on veut intégrer</li>
+        <li><strong>Commit : </strong>On enregistre officiellement dans le dépôt local pour toujours</li>
+    </ul>
+    Pour visionner nos différentes branches, nous entrons la commande :<br/><br/>
+    $ git branch<br/><br/>
+    on va créer une brance par complémentarité :<br/><br/>
+    $git branch cagnotte /!\Créer la branche cagnotte... <br/><br/>
+    pour basculer sur la branche cagnotte :<br/><br/>
+    $ git checkout cagnotte<br/><br/>
+    $ git branch /!\Va mettre la branche principale (⭐ sur cagnotte)<br/><br/>
+    on créer un fichiet cagnotte.txt :<br/><br/>
+    $ touch cagnotte.txt<br/><br/>
+    $git add cagnotte.txt<br/><br/>
+    $ git commit -m "Réalisation de la partie cagnotte côté front end"<br/><br/>
+    On a créer une nouvelle version de notre projet dans le dossier cagnotte.<br/><br/>
+    $git push -u origin cagnotte /!\Cette commandene marche pas, on passe sur Udemy.....
+</p>
+
+
+
+
+</body>
+</html>
+
+
+

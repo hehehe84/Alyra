@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Test JS sur web</title>
+    <script src="Script.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="DOM">Le DOM</h1>
+    <h2>Document Object Model</h2>
+    <p>Il s'agit d'une interface de programmation étant une représentation de l'HTML 
+        Permettant de modifier les élément d'une page HTML à l'aide de JavaScript.<br/>
+        Une représentation courant du DOM est un arbre comme suit :
+    </p>
+    <img src="Images/arbre-DOM.png" title="Arbre_DOM">
+
+    <p>Le DOM nous sert à interagir avec lui soit à :
+        <ul>
+            <li>Modifier le contenu d'un élément précis </li>
+            <li>Modifier le styke d'un élément</li>
+            <li>Créer ou supprimer un élément</li>
+            <li>Faciliter l'intéraction des utilisateurs, de cliquer sur un élément, récupérer des noms dans un formulaire,..</li>
+            <li>Etc.</li>
+        </ul>
+    </p>
+
+    <p id="Docu">Pour retrouver des éléments dans notre page, nous pouvons tout d'abord utiliser le Document :<br/><br/>
+    Le "document" est un objet dont on peut directement accéder à partir de Javascript, le <strong>point de départ</strong> du DOM. Il représente la page entière de notre document.
+    <ul>
+        <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementById" target="_blank"><strong>document.getElementById()</strong></a> : Permet de trouver un élément précis facilement. Ligne 1 du JS et ligne 40 du HTML:</li>
+        <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByClassName" target="_blank"><strong>document.getElementsByClassName()</strong></a> : Même chose que précédemment mais la recherche se fait sur la class et retourne la liste des éléments qui correspondent. Ligne 4 du JS et 45 du HTML</li>
+        <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/getElementsByTagName" target="blank_"><strong>document.getElementsByTagName()</strong></a> : Sélectionne tout les éléments avec un nom de balise bien précis, ex : les button, les liens (a),... Ligne 7 du JS et 52 du HTML</li>
+        <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Document/querySelector" target="_blank"><strong>document.querySelector()</strong></a> : Plus complexe et plus puissante, elle permet de faire une recherche complexe en mélangeant plusieurs procédés. 
+            Par exemple : document.querySelector("#myId p.article > a")  fera une recherche dans l'élément ayant pour id #myId , les éléments de type  < p >  qui ont pour classe  article , afin de récupérer le lien (< a >) qui est un enfant direct (pas des enfants de ses enfants). Ligne 10 du JS et 58 du HTML</li>
+        <li><strong>document.querySelectorAll()</strong> : Va retourner une liste de résultat. Différence avec le précédent qui renvoie le premier résultat.</li>
+        </ul></p>
+    <p id="my-anchor">Element correspondant au document.getElementById()</p>
+
+
+
+
+    <div>
+        <div class="content1">Contenu 1</div>
+        <div class="content1">Contenu 2</div>
+        <div class="content1">Contenu 3</div>
+    </div>
+    <br/>
+
+    <div>
+        <article>Contenu 1</article>
+        <article>Contenu 2</article>
+        <article>Contenu 3</article>
+    </div>
+
+    <div id="myId">
+        <p>
+            <span><a href="#">Lien 1</a></span>
+            <a href="#">Lien 2</a>
+            <span><a href="#">Lien 3</a></span>
+        </p>
+        <p class="article">
+            <span><a href="#">Lien 4</a></span>
+            <span><a href="#">Lien 5</a></span>
+            <a href="#">Lien 6</a>
+        </p>
+        <p>
+            <a href="#">Lien 7</a>
+            <span><a href="#">Lien 8</a></span>
+            <span><a href="#">Lien 9</a></span>
+        </p>
+    </div>
+    
+    <h1 id="Elmts">Recherche depuis un élément </h1>
+    <p>Document n'est pas le seul outil pour rechercher un élément.
+        <ul>
+            <li><strong>element.children</strong> : retourne la liste des enfants de cet élément</li>
+            <li><strong>element.parentElement</strong> : retourne l'élément parent de celui-ci</li>
+            <li><strong>element.nextElementSibling</strong> / <strong>element. previousElementSibling</strong> : permet la navigation vers les élément suivants ou précédent de même niveau que notre élément;</li>
+        </ul>
+    </p>
+    <p>Notre code HTML suivant nous donne un exemple :</p>
+    
+    <div id="parent">
+        <div id="previous">Précédent</div>
+        <div id="main">
+            <p>Paragraphe 1</p>
+            <p>Paragraphe 2</p>
+        </div>
+        <div id="next">Suivant</div>
+    </div>
+
+
+    <h1>Essaie sur les codes d'OC :</h1>
+
+
+
+
+    <article>
+        <p class="important">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, 
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </article>
+      <article>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <ul>
+          <li>Elément 1</li>
+          <li>Elément 2</li>
+          <li>Elément 3</li>
+        </ul>
+        <p id="main-content">Ce contenu est spécial.</p>
+        <ul class="important">
+          <li>Elément 4</li>
+          <li>Elément 5</li>
+          <li>Elément 6</li>
+        </ul>
+      </article>
+      <article>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <ul>
+          <li>Elément 7</li>
+          <li>Elément 8</li>
+          <li>Elément 9</li>
+        </ul>
+        </p>
+      </article>
+      <p class="important">
+        Il n'y a plus d'article
+      <ul>
+        <li>Elément 10</li>
+        <li>Elément 11</li>
+        <li>Elément 12</li>
+      </ul>
+      </p>
+
+      <h1 id="Mod">Modifier le DOM</h1>
+
+      <p>Modifier le contenu d'un élément :<br/>
+        <ul>
+            <li><a href="https://developer.mozilla.org/fr/docs/web/api/element/innerhtml" target="_blank">innerHTML</a> demande en entrée du texte représentant du contenu HTML ex : "< p >Voici un exemple de contenu pour < strong >innerHTML< /strong >< /p >"</li>
+            <li><a href="https://developer.mozilla.org/fr/docs/Web/API/Node/textContent" target="_blank">textContent</a> demande en entrée un siùple texte non interpétré comme du HTML.</li>
+        </ul></p>
+
+    <div id="main1"></div>
+    <p>Si dessus, nous venons de créer deux éléments à partir du code JS ligne 37.</p>
+
+    <h1>Modification des classes :</h1>
+
+    <p>On accéde à la liste de classe d'un élément avec la propriété : <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/classList#M%C3%A9thodes" target="_blank">"classList"</a>. Elle permet de modifier la liste de classe avec les fonctions : <br/>
+    <ul>
+        <li>add(< string >,[< string >,...]) : Ajoute la ou les classes spécifiées.</li>
+        <li>remove(< string >,[< string >,...]) : Supprime la ou les classes spécifiées.</li>
+        <li>contains(< string >) : Vérifie si la classe spécifiée est contenue par l'élément.</li>
+        <li>replace(< old >,< new >) : Remplace l'ancienne classe par la nouvelle classe.</li>
+    </ul></p>
+
+    <p>Petit test avec du JS</p>
+
+    <h1 class="T1">Titre test</h1>
+    <a href="#">Add</a>
+    <a href="#">Remove</a>
+    <a href="#">Toggle</a>
+
+    <p class="Test">Essaie sur les classes créent précédemment !</p>
+        
+    <h1>Modifier les styles d'un élément :</h1>
+
+    <p>Avec la propriété "style", il est possible de récupérer et modifier les styles d'un élément :<br/>
+    Par exemple, pour modifier l'arrière plan, nous pouvons faire : element.style.backgroundColor = '#000';</p>
+
+    <p class="Test2"><a href="https://developer.mozilla.org/fr/docs/orphaned/web/api/elementcssinlinestyle/style" target="_blank">Documentation :</a> Ce paragraphe sert aussi à modifier le style</p>
+
+    <h1>Modifier les attributs</h1>
+
+    <p>Pour se faire, nous devons utiliser la fonction "setAttribute" tel que : <br/>
+    <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/setAttribute" target="_blank">element.setAttribute(< name >,< value >)</a>, on prend donc en compte son nom et sa valeur.<br/>
+    on peut aussi utiliser les fonctions : <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/getAttribute" target="_blank">getAttribute</a> et <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/removeAttribute" target="_blank">removeAttribute</a></p>
+
+    <p class="attTest">Dans l'exemple qu'est ce paragraphe, elt est un élément de type input : <br/>
+        Ci-dessous, un exemple donné par un site Web :</p>
+
+    <button class="AZERTY">Hello World !</button>
+
+    <h1>Créer de nouveaux éléments :</h1>
+
+    <p>A l'aide de la fonction : " document.createElement ". Cela va nous permettre de créer un nouvel élément dans notre DOM<br/>
+    <a href="https://developer.mozilla.org/fr/docs/Web/API/Document/createElement" target="_blank">document.createElement(< tag >)</a></p>
+
+    <h1>Ajouter des enfants !</h1>
+    <h2>Suite logique de la partie précédente :</h2>
+
+    <p id="main3"></p>
+
+    <h1>Supprimer et remplacer des éléments</h1>
+
+    <p><a href="https://developer.mozilla.org/fr/docs/Web/API/Node/removeChild" target="_blank">parentNode.removeChild(< element >)</a> prend en paramètre l'élément à supprimer du parent et va retourner cet élément; et <a href="https://developer.mozilla.org/fr/docs/Web/API/Node/replaceChild" target="_blank">
+        parentNode.replaceChild(< newElement >, < oldElement >)</a> prend en paramètre le nouvel élément à remplacer et va retourner celui-ci.</p>
+
+    <p>Exercice JS : ligne 111</p>
+    <div id="mainExo"></div>
+
+
+
+    <br/>
+    <br/>
+    <br/>
+
+
+
+
+
+
+    <h1 id="Ecout">Nous allons dorénavent "Ecouter" les Evènements !!!!</h1>
+
+    <p>Nous devons Réagir avec l'utilisateur via un "Evenement". Pour réagir, il faut écouter l'évènement.<br/>
+    Un événement est une réaction à une action émise par l'utilisateur (clic de bouton, saisie d'un texte dans un formulaire,..).<br/><br/>
+    L'événement va être représenté par son nom : ("click", "mousemove",...) et une fonction "callback".<br/><br/><br/>
+    L'événement est dit propagé par défaut => si nous n'indiquons pas à l'événement que nous le traitons, il sera transmis à l'élément parent, 
+    et ainsi de suite jusqu'à l'élément racine.
+    </p>
+    <p>La fonction "callback" est spécifié par nous ! Nous l'appelons à chaque fois que l'action que l'on veut suivre est exécutée.
+        Pour suivre le clic, notre fonction sera appelé dés que l'on clique sur cet élément.
+    </p>
+
+    <h2>Réagir au clic sur un élément </h2>
+
+    <p>A l'aide de la fonction "<a href="https://developer.mozilla.org/fr/docs/Web/API/EventTarget/addEventListener" target="_blank">addEventListener(< event >, < callback >)</a>". 
+        Qui nous permet d'écouter tous types <a href="https://developer.mozilla.org/fr/docs/Web/Events" target="_blank">d'événements.</a></p>
+
+    <h3>Exemple du clic de souris : l'événement onclick</h3>
+
+    <p>element.addEventListener('click', onClick); <br/>
+    "onClick" correspond à la fonction que nous définissons appelé à chaque fois que l'utilisateur cliquera sur le lien.<br/>
+    On peut ainsi : récupérer des informations depuis un serveur, afficher un message, etc.<br/>
+    Avec la fonction "callback" on peut ainsi intéragir avec les comportements de l'utilisateur. <a id="mon-lien" href="#">Voyons un petit exemple :</a></p>
+
+
+    <h3>preventDefault()</h3>
+
+    <p>Afficher un message sans recharger la page. En appelant cette fonction dans le callback, 
+        on demande au gestionnaire des événements de ne pas exécuter le comportement par défaut de notre 
+        élément (qui est la redirection vers une autre page pour un lien). Et cela marche aussi pour d'autres 
+        types d'éléments que le lien. Cette même fonction exécutée pendant un événement "onsubmit" sur un 
+        formulaire empêchera le formulaire de s'envoyer au serveur, par exemple. <br/>
+        On a un exemple avec ce <a id="mon-lien2" href="#">lien</a></p>
+
+    <h3><a href="https://developer.mozilla.org/fr/docs/Web/API/Event/stopPropagation" target="_blank">stopPropagation()</a></h3>
+
+    <p>Comme "preventDefault()" et "stopPropagation()"; "stopPropagation()" est une fonction de l'objet que notre fonction reçoit
+        en paramètre.<br/>
+        Son rôle est d'empêcher la propagation de l'évènement vers son parent.(pour éviter la propagation vers le tronc du DOM).
+    </p>
+
+    <P>On stop ainsi l'évènement dans les troncs parents.<br/>
+    Pour observer cela, nous allons nous projetter dans un exemple :<br/>
+    Admettons par que nous ayons un élément pour lequel nous voulons afficher un message 
+    lorsque l'on clique dessus. Mais à l'intérieur de cet élément, nous avons aussi un autre 
+    élément qui doit nous afficher un autre message lorsque l'on clique dessus.<br/>
+    <br/>
+    Par défaut, si nous cliquons dans l'élément intérieur, le message va s'afficher, puis notre 
+    élément parent va lui aussi recevoir l'événement du clic et encore changer le message. 
+    Pour éviter cela, nous devons stopper la propagation de l'événement.<br/><br/>
+    Le code en JavaScript est le suivant :<br/><br/>
+    elementInterieur.addEventListener('click', function(event) {<br/>
+        event.stopPropagation();<br/>
+        elementAvecMessage.innerHTML = "Message de l'élément intérieur";<br/>
+    });<br/>
+    A l'aide de cette fonctions sur l'élément enfant, l'élément parent ne sera pas affecté par le 
+    click
+    </P>
+    
+    <p id="ExoOC">Soit l'exo OpenClassroom suivant :</p>
+    
+    <article id="parent">
+        <a class="link" id="child" href="#">Cliquez ici</a>
+        <p>Battle d'événement !</p>
+        Parent : <span id="parent-count">0</span>
+        Enfant : <span id="child-count">0</span>
+    </article>
+    
+    <p>Il semble que la propagation ne soit pas implanté dans ma version de chrome...</p>
+
+
+    <h1>Petit exo</h1>
+    <p>Trouvé <a href="https://www.pierre-giraud.com/afficher-cacher-div-javascript/#:~:text=Il%20existe%20principalement%20deux%20m%C3%A9thodes,'affichage%20sur%20display%3A%20none%20." target="_blank">ici</a></p>
+
+    <button id="togg1">Clique pour faire apparaître et disparaitre le premier div !</button><br/>
+    <button id="togg2">Clique pour faire apparaître et disparaitre le second div !</button>
+
+    <div id="d1">
+        <p>Premier paragraphe de d1</p>
+        <p>En réalité, les fontions qui sont exécutés sont des fonctions dites "toggle"</p>
+    </div>
+    <div id="d2">
+        <p>Il existe deux manière de cacher un élément <span>comme un div</span> en CSS :</p>
+        <ul>
+            <li>Utiliser visibility : hidden</li>
+            <li>Utiliser display : none</li>
+        </ul>
+    </div>
+
+    <h2 id="ExoSurv">Afficher/Cacher un élément HTML en le survolant !!!</h2>
+    <div id="d3">
+        <p>Ce texte appartient au DIV de ma page</p>
+        <p id="p1" class="hide">Ce paragraphe caché apparaît quand ma souris passe dessus</p>
+    </div>
+    <div id="d4">
+        <p>Il existe deux façons de cacher un élément <span>comme un DIV</span> en CSS :</p>
+        <ul id="ul1" class="hide">
+            <li>Utiliser visibility : hidden</li>
+            <li>Utiliser display : none</li>
+        </ul>
+        
+    </div>
+
+    <h1 id="MvtSouris">Connaître la position d'une souris d'un utilisateur ou un texte saisie par l'utilisateur</h1>
+
+    <p>On a pris de l'avance avec précédemment héhé :</p>
+
+    <p>Chaque événement implémentent un objet "Event". On peut citer :<br/>
+    preventDefault() : qui empêche l'éxécution du comportement par défaut.<br/>
+    stopPropagation() : qui empêche la propagation de l'événement vers d'autres éléments.<br/><br/>
+    L'interface <a href="https://developer.mozilla.org/fr/docs/Web/API/Event" target="_blank">Event</a> possède
+    beaucoup plus d'événements !</p>
+
+    <h1>Détecter le mouvement de la souris !!!</h1>
+
+    <p>A l'aide de <a href="https://developer.mozilla.org/fr/docs/Web/API/Element/mousemove_event" target="blank_">mousemove</a>
+         comme pour l'exercice précédent !</p>
+
+    <p>Ici une liste de ce que permet de récupérer mousemove</p>
+    <ul>
+        <li> "clientX" / "clientY" : position de la souris dans les coordonnées locales (contenu du DOM) ;</li>
+        <li> "offsetX" / "offsetY" : position de la souris par rapport à l'élément sur lequel on écoute l'événement ;</li>
+        <li> "pageX" / "pageY" : position de la souris par rapport au document entier ;</li>
+        <li> "screenX" / "screenY" : position de la souris par rapport à la fenêtre du navigateur ;</li>
+        <li> "movementX" / "movementY" : position de la souris par rapport à la position de la souris lors du dernier événement "mousemove"</li>
+    </ul>
+
+    <p>Un exemple se trouve ligne 228 du JS </p>
+
+    <h1 id="LectTexte">Lire le contenu d'un champ texte !!</h1>
+
+    <p>A l'aide de la <a href="https://developer.mozilla.org/fr/docs/Web/Events" target="blank_">liste des événements</a>, nous nous rendons compte
+    que l'événement <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event">"change"</a> fonctionne avec des
+    éléments de type < input >, < select > et < textarea >. Il se déclenche quand le champ perd le focus
+    (quand l'utilisateur passe à autre chose en cliquant ailleur). Il fonctionne aussi pour les "checkbox et les casses
+    à choix unique ("radio")</p>
+
+    <label>Choose an ice cream flavor:
+        <select class="ice-cream" name="ice-cream">
+          <option value="">Select One …</option>
+          <option value="chocolate">Chocolate</option>
+          <option value="sardine">Sardine</option>
+          <option value="vanilla">Vanilla</option>
+        </select>
+      </label>
+      
+      <div class="result"></div>
+
+    <p>Element ne servant qu'à appliquer cette fonction "change"</p>
+
+    <input placeholder="Enter some text" name="name"/>
+    <p id="log"></p>
+
+    <p>De la même manière, si nous souhaitons un changement à l'instant que la lettre est entrée, Nous
+        pouvons utiliser l'événement <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event">"input"</a>.
+    </p>
+
+    <input placeholder="Entre un nouveau texte" name="name"/>
+    <p id="valuenew"></p>
+    <p>Texte ne servant à r</p>
+
+
+
+    <h2 id="ExoComplet">Exercice OC</h2>
+    <p>Il est temps de s'exercer :</p>
+
+    <form>
+        <div><input type="text" id="name" placeholder="Nom" /></div>
+        <div>
+          <select id="gender">
+            <option>Choisissez une valeur</option>
+            <option value="male">Homme</option>
+            <option value="female">Femme</option>
+            <option value="other">Autre</option>
+          </select>  
+        </div>
+      </form>
+      
+      <div id="result2">
+        Nom : <span id="res-name"></span><br />
+        Genre : <span id="res-gender"></span><br />
+        Souris : (<span id="mouse-x"></span>, <span id="mouse-y"></span>)
+      </div>
+      <br/><br/><br/>
+
+
+      <h1 id="APIGen">API Et services WEB</h1>
+
+      <h3>Les sites web et les API sont essentiels pour les applications WEB</h3>
+      <p>Les services web sont des programmes qui dépendent de requêtes qui respectent des
+          protocoles comme SMTP, FTP et/ou HTTP.<br/>
+          <br/>
+          En particulier, nous allons nous intéresser au HTTP Pour envoyer
+          des données depuis ou vers un serveur.<br/>
+          En plus de cela, le protocole va nous donner un Code de statut qui va nous indiquer
+          si tout s'est bien passé ! Ainsi, les codes <ul>
+              <li>200 à 299 indiquent que tout s'est bien déroulé</li>
+              <li>300 à 399 indiquent que le contenu à été déplacé ou n'est plus disponible.</li>
+              <li>400 à 499 sont des codes d'erreurs liés à une mauvaise utilisation du service WEB</li>
+              <li>500 ou plus sont des codes du service WEB, il faudra retenter sa chance plus tard !</li>
+          </ul>
+          Dans une requête HTTP, nous pouvons avoir besoin de demander, envoyer, supprimer ou créer des ressources.
+          Il y a plusieurs Méthodes HTTP :
+          <ul>Parmis les plus courantes :
+              <li>GET : Récupère des ressources (Ex : Le temps actuel sur un service météo)</li>
+              <li>POST : Créer ou modifiz une ressource (création d'un nouvel utilisateur sur une appli)</li>
+              <li>PUT : Modifie une ressource (comme le nom de l'utilisateur crée par POST)</li>
+              <li>DELETE : Supprome une ressource, comme un commentaire dans une discussion.</li>
+          </ul>
+
+
+      </p>
+
+      <p>Une API (Application Programming Interface) est une interface de communication.<br/>
+          Protocole HTTP (HyperText Transfer Protocol) récupère et envoie toutes sortes 
+          de données depuis ou vers un serveur implémentant ce protocole grâce à son API.<br/>
+          Les données doivent être accessibles et il faut pouvoir les enregistrer sur un service web.
+      </p>
+
+      <h3>Réponse du service WEB</h3>
+      <p>Par des données : page HTML,... <br/>
+    Mais aussi par les <a href="https://fr.wikipedia.org/wiki/Liste_des_codes_HTTP" target="_blank">codes HTTP</a> décrits précédemment.</p>
+
+        <p>Ici, nous parlons surtout de conventions, rien n'est obligatoire mais tout ceci est conseillé.</p>
+
+        <h1 id="CommunicJS">Comment communiquer avec le JavaScript ?</h1>
+
+        <h2>Récupérer les données d'un service WEB</h2>
+
+        <p>Il est primordiale de créer des requêtes HTTP à l'aide d'AJAX mis en place avec 
+            JS. Pour récupérer. Il faut récupérer des données au format JSON.
+        </p>
+
+        <h4>Qu'est ce qu'un FETCH ?</h4>
+
+        <p>Le fetch est un ensemble d'objet et de fonctions mis à disposition par JS. Il permet de
+            éxecuter des requêtes HTTP de manières asynchrone (exécuter du code (une requête ici), 
+            sans bloquer l'exécution de la page, en attendant la réponse du service web.)
+        </p>
+
+        <p>Une API Fetch va nous aider à exécuter du HTTP sans avoir à recharger la page du navigateur<br/>
+            Et permet ainsi d'avoir un site réactif (sans avoir à recharger la page sans cesse).<br/>
+            Ainsi que d'améliorer l'expérience utilisateur (en chargeant le contenu au fur et à mesure que l'on parcours la page).<br/>
+        </p>
+        
+        <p>Pour envoyer une requête HTTP, nous utilisons la méthode GET comme suit :<br/><br/>
+            <strong></strong>fetch("http://url-service-web.com/api/users");</strong><br/>
+            a l'aide de ce code, nous envoyons une requête HTTP de type GET au service web à l'adresse :
+            http://url-service-web.com/api/users.<br/>
+        </p>>
+        
+        <h4 id="JSONgen">Récupérer et utiliser les données au format JSON</h4>
+
+        <p>Le format le plus courant est le <strong>JSON</strong> pour : JavaScript Object Notation.
+        Ce language est synthaxiquement proche du JS. Mais différent car descriptif. Ainsi, le
+        code JS suivant : <br/><br/>
+        const obj = {<br/>
+            name: "Mon contenu",<br/>
+            id: 1234,<br/>
+            message: "Voici mon contenu",<br/>
+            author: {<br/>
+                name: "John"<br/>
+            },<br/>
+            comments: [<br/>
+                {<br/>
+                    id: 45,<br/>
+                    message: "Commentaire 1"<br/>
+                },<br/>
+                {<br/>
+                    id: 46,<br/>
+                    message: "Commentaire 2"<br/>
+                }<br/>
+            ]<br/>
+        };<br/><br/><br/>
+    Sera retranscrit en JSON de la manière suivante :<br/><br/>
+    {<br/>
+        "name": "Mon contenu",<br/>
+        "id": 1234,<br/>
+        "message": "Voici mon contenu",<br/>
+        "author": {<br/>
+            "name": "John"<br/>
+        },<br/>
+        "comments": [<br/>
+            {<br/>
+                "id": 45,<br/>
+                "message": "Commentaire 1"<br/>
+            },<br/>
+            {<br/>
+                id: 46,<br/>
+                "message": "Commentaire 2"<br/>
+            }<br/>
+        ]<br/>
+    }<br/><br/><br/>
+    Le JSON est un language <strong>objet</strong>. Différent des languages de balisage, 
+    car la syntaxe vient des objets en JavaScript. Ce language est plus "léger" en terme d'espace
+    utilisé lors des échanges entre l'utilisateur et le service web.
+    </p>
+    
+    <h4 id="DiscussAPI">Récupération des résultats de la requête :</h4>
+
+    <p>Le Fetch va nous envoyer une <strong>Promise :</strong> objet qui fournit une fonction <strong>Then</strong> 
+        qui sera exécutée quand le résultat aura été obtenu, et une fonction <strong>catch</strong> qui sera appelée 
+        s’il y a une erreur qui est survenue lors de la requête.</p>
+
+    <p>Nous avons un exemple d'API exécuté ligne 314 dans notre JS et affiché sur la console.</p>
+
+    <p>Exemple Open classroom :</p>
+
+
+    <div><button id="ask-hello">Bien le bonjour</button></div>
+    <div id="hello-result"></div>
+
+    <p>Il est important à noter, que dans notre JS, la rquête de la fonction .then(function(value) {<br/>
+        Fait directement référence à la ligne du fichier JSON suivant dans l'url entrée :<br/><br/>
+        "queryString": {<br/>
+            "greetings": "salut"<br/>
+          },<br/>
+    </p>
+
+    <ul>Ainsi, nous avons pu voir que :
+        <li>L'API Fetch permet de faire des requêtes HTTP vers un service web</li>
+        <li>Le format JSON est très utilisé dans la communication avec les API des services web car il est très proche des objets JavaScript</li>
+    </ul>
+
+    <h4 id="POST">Maintenant, nous allons utiliser les requêtes "POST"</h4>
+
+    <p>La validation des données... La majorité des données viennent des données saisis.<br/>
+    Ne jamais faire confiance aux utilisateurs ! Il faut donc vérifier toutes les données saisies par
+    l'utilisateurs par :</p>
+    <ul>
+        <li>Les événements du DOM : pour vérifier nous même les données saisies par l'user</li>
+        <li>Les REGEX: Qui est un format spécial permettant de vérifier que les éléments saisies sont en accord avec ce que nous avons défini.</li>
+        <li>Validation directement dans le code du HTML (exemple avec l'attribut "Require"</li>
+    </ul>
+
+    <h4 id="ValidDOM">Validation de données à l'aide des événements du DOM :</h4>
+    <p>On peut écouter l'événement onChange pour vérifier les données dès que l'utilisateur
+        fini de l'éditer. Ainsi, d'après ce qui suit :
+    </p>
+    <input id="myInput" placeholder="Entre Hello" name="name"/>
+    <p id="Att"></p>
+
+    <br/><br/><br/>
+    
+
+
+
+
+    <h4 id="ValidREGEX">Validation complexe à l'aide de REGEX</h4>
+
+
+    <p>Il s'agit d'un format spécial permettant de "matcher" du texte !</p>
+
+    <input id="InputRegex" placeholder="Entre le code magique" name="name"/>
+    
+    <p id="Att2"></p>
+    
+    <p>Ci-dessus, l'input ne peut fonctionner uniquement si notre texte commence par 
+        la lettre "e" et est suivi d'au moins 3 chiffres. Regex est un peu compliqué,
+        Il ne faut pas hésiter à lire la <a href="https://regexr.com/" target="_blank">doc</a> !!!
+    </p>
+
+    <br/><br/><br/>
+
+    <h3>Les contraintes du HTML sont les suivantes !</h3>
+
+    <p>A l'aide d'HTML5, il est possible d'afficher directement de la validation sans JS. Pour se 
+        faire, nous pouvons utiliser des attributs.
+    </p>
+
+    <h4 id="ContrTYPE">Les attributs types pour inputs</h4>
+
+    <p>Pour valider une balise "Input", nous pouvons utiliser l'attribut "type".
+        A l'aide de ces "Types", nous n'avons pas à nous embêter, si le type est "e_mail", 
+        l'utilisateur ne peut que rentrer un e-mail dans la case. Le navigateur empêchera 
+        la validation d'une saisie hors de celle d'un email.
+    </p>
+
+    <h4>Les attributs de validation simples</h4>
+
+    <p>Il est possible de perfectionner la validation en fonctions des types et des inputs.
+        <ul>
+            <li>min  /  max  : fonctionne avec des champs de type nombre ou date. 
+                Cela permet de définir une valeur minimum et une valeur maximum autorisées</li>
+            <li>required  : fonctionne avec à peu près tous les types de champs. 
+                Cela rend obligatoire le remplissage de ce champ ;</li>
+            <li>step  : fonctionne avec les dates ou les nombres. Cela permet de définir une 
+                valeur d'incrément lorsque vous changez la valeur du champ via les flèches ;</li>
+            <li>minlength  /  maxlength  : fonctionne avec les champs textuels 
+                ( "text", "url", "tel", "email"...). 
+                Cela permet de définir un nombre de caractères minimum et maximum autorisé.</li>
+        </ul>
+    </p>
+
+    <h4>Les patterns</h4>
+
+    <p>Nous avons vu qu'il était possible d'avoir une validation complexe grâce aux Regex 
+        en JavaScript. Eh bien c'est aussi possible directement en HTML5 avec l'attribut "pattern". 
+        Il suffit de définir une Regex dans cet attribut, et vous obligez la valeur du champ 
+        correspondant à la respecter.<br/>
+    Exemple ci-après. <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Constraint_validation" target="_blank">doc sur les validation contraintes :</a></p>
+
+    <input type="text" pattern="[0-9]{3}" placeholder="3 digit area code" /> 
+
+    <h2 id="ExoContr">Maintenant un petit exo pour valider cela</h2>
+
+    <form id="form-to-check">
+        <p>
+          <label>Code : <input type="text" name="code" id="code" /></label><br />
+          <div class="result" id="code-validation"></div>
+        </p>
+        <p>
+          <label>Email : <input type="text" name="email" required /></label>
+        </p>
+        <p>
+           <input type="submit" value="Vérifier" id="submit-btn" />
+        </p>
+    </form>
+
+    <br/><br/><br/>
+
+    <h2>Sauvegarder des données sur le service WEB</h2>
+
+    <h4>Envoyer des données en les ajoutant aux requêtes.</h4>
+
+    <p>La méthode GET, ne permet QUE de réceptionner des données.<br/>
+    Les méthodes POST et PUT permettent quand à elles de recevoir et d'envoyer des données.
+    Ainsi, nous allons voir comment envoyer des données dans le "body".</p>
+
+    <h4 id="POST_util">Envoyer des données avec une requête POST</h4>
+
+    <p>Via AJAX, nous allons envoyer des données à un service WEB avec POST.
+        Pour se faire, nous utilisons la méthode "send()" ligne 471 de notre JS :
+    </p>
+    <p>Dans l'exemple du JS, nous transformons notre fonction fetch() au format JSON
+        A l'aide de la fonction : "JSON.stringify(json)".Nous prévenons ainsi notre
+        service WEB qu'il va recevoir du JSON.<br/>
+        Nous effectuons celà à l'aide de <strong>Headers</strong>, en-têtes envoyés en 
+        même temps que la requête pour donner des infos sur celle-ci.<br>
+        <br/>Les hearders en questions sont :
+        <ul>
+            <li>"Content-Type" avec la valeur application/json</li>
+            <li>"Accept" avec la valeur application/json</li>
+        </ul>
+        Le second paramètre de la fonction "FETCH()" va permettre de définir un objet qui sera :
+    <ul>
+        <li>la méthode HTTP, le body (les données que l'on veut envoyer</li>
+        <li>Les hearders, donnant un peu plus d'infos sur la requête.</li>
+    </ul>    <br/><br/>
+    Il est à noter que "PUT" fonctionne exactement comme "POST"</p>
+
+    <h4>Exercice d'application :</h4>
+
+    <form id="form2">
+        <label>Saisissez une valeur <input type="text" id="value" /></label><br />
+        <input type="submit" value="Envoyer" />
+      </form>
+    <div id="result3"></div>
+
+
+
+    <h2>Correc tion de l'exo openclassroom :</h2>
+    <div class="Code2">
+    <p>
+        fetch(“http://url-de-mon-service”)<br/><br/>
+
+        .then(function(res) {<br/><br/>
+    
+            console.log(res.json());<br/><br/>
+    
+        });<br/>
+        <br/>Est une promise résolue avec l’objet JavaScript qui correspond à la réponse à la requête GET (parsée depuis du JSON).<br/><br/>
+
+        <br/>fetch(“http://url-service-web”, {<br/><br/>
+
+            method: “POST”,<br/><br/>
+        
+            headers: { <br/><br/>
+        
+        'Accept': 'application/json', <br/><br/>
+        
+        'Content-Type': 'application/json' <br/><br/>
+        
+        },<br/><br/>
+        
+            body: JSON.stringify({foo: “bar”})<br/><br/>
+        
+        });<br/><br/>
+        fait une requête de type POST avec le contenu JSON “{“foo”: “bar”}”
+
+    
+    </p>
+    </div>
+
+
+    <h1 id="Async">Comprendre le fonctionnement des fonctions Asynchrone En JS</h1>
+
+    <p>JS est synchrone et monothread, il ne peut faire qu'une chose à la fois. Cependant, à l'aide d'un Event_loop, nous pouvons effectuer les
+        fonctions synchrone en exécutant le code de manière asynchrone. Le code ne s'effectue pas en parallèle mais des petits bouts s'effectuent 
+        l'un après l'autre. 
+    </p>
+
+    <p><strong>JS Synchrone et Mono-thread :</strong> Ainsi, chaque ligne est exécutée l'une après l'autre. Il ne peut faire qu'une chose à la fois.
+    Il est Cependant possible faire de l'asynchrone en JavaScript mais en exécution synchrone.<br/><br/>
+    Du code asynchrone va s'exécuter ligne après ligne, mais la ligne suivante n'attendra pas que la ligne asynchrone ait fini son exécution<br/>
+    Exemple : <br/><br/>
+    let productId = 1;<br/>
+    let productPrice = getProductPriceAsync(productId);<br/>
+    doSomething(productPrice);<br/><br/>
+
+    Si getProductPriceAsync() est asynchrone : la ligne suivante est exécutée avant la fin de l'exécution de la fonction asynchrone. Cependant, il ne sera pas possible
+    d'utiliser la valeur de productPrice. <br/><br/>
+    Il est possible de faire celà avec un language synchrone à l'aide de l "event loop" !
+    </p>
+
+    <h3 id="E_L"> L'event loop</h3>
+
+    <p><strong>Définition :</strong> En JavaScript, chaque ligne de code est exécutée de façon synchrone, mais il est possible de demander 
+        à exécuter du code de manière asynchrone. Lorsque l'on demande à exécuter une fonction de façon asynchrone, la fonction en question 
+        est placée dans une sorte de file d'attente qui va exécuter toutes les fonctions qu'elle contient les unes après les autres. 
+        C'est ce qu'on appelle <strong>L'event loop</strong>. Tout le cœur du langage fonctionne autour de ça.</p>
+
+    <h4>Il est possible de jouer avec cette Event Loop !</h4>
+
+    <p id="setTO">Et ainsi, demander à créer du code de manière asynchrone !<br/><br/>
+    Avec la fonction : <strong><a href="https://www.w3schools.com/jsref/met_win_settimeout.asp" target="_blank">setTimeout</a></strong> !<br/>
+    Fonction la plus répandue pour exécuter du code de manière asynchrone. Elle prend en compte deux paramètres : 
+    <ul>
+        <li>La <strong>fonction à exécuter</strong> de manière asynchrone(donc ajoutée à la file d'attente de l'event loop)</li>
+        <li>Le <strong>délai</strong> en milliseconde avant d'exécuter cette fonction.</li>
+    </ul>
+    Exemple : <br/><br/>
+    <div class="Code2">
+    setTimeout(function() {<br/>
+        console.log("I'm here!")<br/>
+    }, 5000);<br/>
+    </div>
+    console.log("Where are you?");<br/>
+    Ligne 570 de notre JS</p>
+
+    <p>La fonction "setTimeout" retourne une valeur identifianr le code asynchrone que l'on veut exécuter. Nous pouvons passer cet identifiant en paramètre
+        à la fonction "clearTimeout" pour annuler l'exécution asynchrone de la fonction avant qu'elle soit exécutée.<br/><br/><br/>
+        Nous pouvons aussi utiliser les fonctions suivantes, moins répandues pour exécuter du code de manière asynchrone :<br/>
+        <ul>
+            <li id="setInt">La fonction <strong><a href="https://www.w3schools.com/jsref/met_win_setinterval.asp" target="_blank">setInterval</a></strong>
+            fonctionnant comme setTimeout, à ceci près qu'elle exécute la fonction passée en paramètre en boucle à une fréquence déterminée par 
+            le temps en millisecondes passé en second paramètre. Il suffira de passer la valeur de retour de "setInterval" à "clearInterval" pour
+             stopper l'exécution en boucle de la fonction ;</li>
+            <li id="setImm">La fonction <strong><a href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setImmediate" target="_blank">setImmediate</a></strong> prennant en seul paramètre la 
+            fonction à exécuter de façon synchrone. La fonction en question sera placée dans la file d'attente de l'event loop, mais va passer devant toutes les autres fonctions, 
+            sauf certaines spécifiques au Javascript : les "événements", le rendu, et l'I/O. Il existe aussi <strong>nextTick</strong>, qui permet, là, de court-circuiter tout le monde. 
+            À utiliser avec précaution, donc...</li>
+        </ul>
+
+    </p>
+    <h3 id="I_O">Parlons dorénavent des I/O</h3>
+
+    <p>Un I/O = Evenement liés à l'INPUT (flux d'entrée) et l'OUTPUT (flux de sortie). Correspondant à la lecture/écriture des fichiers, requêtes HTTP,etc.<br/>
+    <br/>Une exécution de la fonction "fetch()" lors d'une requête HTTP ne bloque pas l'exécution du code => Fonction asynchrone (le code s'exécute et nous n'attendons pas la réponse avant d'exécuter le reste).</p>
+
+    <p>"fetch()" retourne une <strong>Promise</strong> qui est une façon de faire de l’asynchrone car les fonctions "then()" et "catch()"  sont appelées plus tard lorsque le travail 
+        (une requête HTTP) est terminé. Et de la même manière, tout ce qui touche à l'I/O peut être exécuté de manière asynchrone. C'est heureux car leur exécution peut prendre du temps. </p>
+
+    <p>Maintenant que nous avons des bases sur le code asynchrone, nous allons maintenant voir comment l'exécuter !</p>
+
+    <h2 id="Gasy">Gérer du code asynchrone !</h2>
+
+    <p>Il ya plusieurs Méthodes :<br/><br/>
+        Callback (dans les évènements du DOM)<br/>
+
+        Promesses (code exécuter une fois un résultat connu)<br/>
+
+        Async/Await gérant l'asynchrone plus facilement !<br/>
+    </p>
+
+    <h3 id="CallBac">Les Callbacks !</h3>
+
+    <p>Utilisé par beaucoup de modules JavaScript. Une <strong>Callback</strong> est une fonction à définir. Elle est à passer en paramètre d'une fonction asynchrone.<br/>
+    Dès que la fonction asynchrone fini sa tâche,elle appelle notre callback en lui donnant un <strong>Résultat</strong>.<br/>
+    Le code dans notre fonction callback est alors exécuté de manière asynchrone. Comme nos fameux <strong>événement</strong>.
+    <br/><br/>Ainsi, une fonction .addEventListener("click",fonction(){}); Va être exécuter lors du clique de l'utilisateur, il n'empêche pas l'exécution normal du code ! </p>
+    
+    <p>Les callback sont très pratique et utile, cependant, il faut se méfier du "callback hell" !!! où l'on va imbriquer plusieurs couches de callbacks, rendant le code
+        très difficile à lire et générant des erreurs: <br/><br>
+        <div class="Code2">
+        elt.addEventListener('click', function(e) {<br/>
+            &nbsp;    mysql.connect(function(err) {<br/>
+                &emsp;    mysql.query(sql, function(err, result) {<br/>
+                    &emsp; &nbsp;    fs.readFile(filePath, function(err, data) {<br/>
+                        &emsp; &emsp;       mysql.query(sql, function(err, result) {<br/>
+                            &emsp; &emsp; &nbsp;          // etc ...<br/>
+                        &emsp; &emsp;   });<br/>
+                    &emsp; &nbsp;   });<br/>
+                &emsp;});<br/>
+            &nbsp;}); <br/>
+        });</div><br/><br/>
+
+        Ce code, qui n'est pas facile à lire, pourrait pourtant correspondre à un cas d'utilisation concret des callbacks : dès que l'utilisateur clique sur un élément, 
+        on ouvre une connexion MySQL, puis on récupère des données depuis la base de données, on lit un contenu dans un fichier et on fait une nouvelle requête MySQL, etc.
+        Afin de garantir la bonne tenue du code, il faut un mécanisme permettant de savoir si nous avons eu une erreur.
+    </p>
+
+    <h4>Gérer des erreurs de callback</h4>
+
+    <p>Nous prenons deux paramètres dans notre callback, (2nd paramètre est notre donnée et le 1er est l'erreur)<br/>
+    Si elle n'est pas null ou undefined, elle contient un message d'erreur. Ligne 579 du JS</p>
+
+    <h3 id="Promises">Les Promises</h3>
+
+    <p>Plus complexes mais plus puissantes et facile à lire que les callbacks :<br/>
+    Quand nous effectuons du code asynchrone, ce code va nous retourner une "promesse" qu'un résultat nous sera prochainement envoyé.<br/>
+    L'objet "Promise" devient alors un <strong>résultat : "resolve"</strong> ou bien une <strong>Erreur : "reject"</strong><br/><br/>
+    Pour récupérer une "Promise":
+    <ul id="Rec_Pro">
+    <li>Nous utilisons sa fonction "then()" pour exécuter du code dès que la promesse est résolue.</li>
+    <li>Nous utilisons aussi sa fonction "catch()" pour exécuter du code dès qu'une erreur survient.</li>
+    </ul></p>
+
+    <p>
+        
+        Prenons un exemple :<br/>
+        <br/>
+        <div class="Code2">
+        functionThatReturnsAPromise()<br/>
+        &nbsp;    .then(function(data) {<br/>
+            &emsp;         // Do somthing with data<br/> 
+        &nbsp;    })<br/>
+        &nbsp;    .catch(function(err) {<br/>
+            &emsp;         // Do something with error<br/>
+        &nbsp;    });</div>
+        <br/><br/><br/>
+
+        "functionThatReturnsAPromise" renvoie une "Promise". 
+        <ul>
+            <li>Nous allons utiliser <strong>then()</strong> en lui passant une fonction qui exécutée 
+        dès qu'un résultat sera reçu (avec le résultat en question passé à notre fonction)</li>
+            <li><strong>catch()</strong> quant à lui est une fonction qui intervient si une erreur apparaît (avec l'erreur en fonction passée à notre fonction).</li>
+        </ul>
+    </p>
+
+    <p id="ChainProm">Il est alors possible de "chainer" les <strong>Promises</strong>. La valeur retournée dans la fonction "then()" est transformée en une nouvelle "Promise" que nous pourrons 
+    utiliser avec une nouvelle fonction "then()".<br/>
+    Si notre fonction retourne par contre une exception, alors une nouvelle Promise rejetée est créée et on peut l'intercepter avec la fonction "catch()". 
+    Mais si la fonction que l'on a passée à "catch()" retourne une nouvelle valeur, alors on a à nouveau une Promise résolue que l'on peut utiliser avec une fonction "then()", etc.</p>
+
+    <p>Par exemple (Chaîner du code asynchrone à l'aide des "Promises"): <br/><br/>
+    <div class="Code2">
+    returnAPromiseWithNumber2()<br/>
+    &nbsp;    .then(function(data) { // Data is 2<br/>
+    &emsp;        return data + 1;<br/>
+    &nbsp;    })<br/>
+    &nbsp;    .then(function(data) { // Data is 3<br/>
+    &emsp;        throw new Error('error');<br/>
+    &nbsp;    })<br/>
+    &nbsp;   .then(function(data) {<br/>
+    &emsp;        // Not executed  <br/>
+    &nbsp;    })<br/>
+    &nbsp;    .catch(function(err) {<br/>
+    &emsp;        return 5;<br/>
+    &nbsp;    })<br/>
+    &nbsp;    .then(function(data) { // Data is 5<br/>
+    &emsp;        // Do something<br/>
+    &nbsp;  });<br/>
+    </div><br/>
+
+    Cette fonction va nous renvoyer une "Promise" qui ne va être résolue qu'avec le nombre "2".<br/>
+
+    La première fonction "then()" va récupérer la valeur.<br/>
+
+    Puis, on retourne dans cette fonction (2+1) ce qui va créer une "Promise" qui est résolue immédiatement avec (3).<br/>
+
+    Puis, dans le "then()" suivant, nous retournons une erreur.<br/>
+
+    De ce fait, le "then()" qui suit ne sera pas appelé et c'est le "catch()" suivant qui va être appelé avec l'erreur en question. 
+    Lui-même retourne une nouvelle valeur qui est transformée en "Promise" qui est immédiatement résolue avec la valeur (5). Le dernier "then()" va être exécuté avec cette valeur.</p>
+
+    <h4 id="errProm">Gérer les erreurs Promise</h4>
+
+    <p>Une erreur est une exception qui a été lancée et il est impossible de l'intercepter avec la fonction "catch()" de la "Promise"</p>
+
+    <h1 id="Asyncwait">Async/Await</h1>
+
+    <p><strong>async</strong> et <strong>await</strong> sont 2 nouveaux mots clés permettant de gérer du code asynchrone de manière plus insuitive, en bloquant
+    l'exécution d'un code asynchrone jusqu'à ce qu'il retourne un résultat.<br/>
+    Attention : "async" et "await" utilisent des Promises en arrière-plan, il est donc possible d'utiliser les deux en même temps.</p>
+
+    <p>Exemple : <br/>
+    <div class="Code2">
+    async function fonctionAsynchrone1() {/* code asynchrone */}<br/>
+    async function fonctionAsynchrone2() {/* code asynchrone */}<br/><br/>
+
+    async function fonctionAsynchrone3() {<br/>
+    const value1 = await fonctionAsynchrone1();<br/>
+    const value2 = await fonctionAsynchrone2();<br/>
+    return value1 + value2;<br/>
+    }<br/>
+    </div></p>
+    <p>Dans cet exemple, nous avons un total de 3 fonction asynchrones : "fonctionAsynchrone n". Quand on utilise "async" et "await", une fonction asynchrone 
+        doit avoir le mot clé <strong>"async"</strong> avant la fonction. Ensuite, dans le code, nous pouvons faire appel à des fonctions asynchrones et attendre 
+        leur résultat grâce au mot clé <strong>"await"</strong> que l'on met devant l'appel de la fonction.</p>
+
+    <h4>Gérer les erreurs async/await</h4>
+
+    <p>"async"/"await" utilisant les "Promise", la levée d'une erreur se fait aussi par une exception.<br/>
+
+        Pour intercepter cette erreur, par contre, il suffit d'exécuter notre code asynchrone dans un bloc "try {} catch (e) {}"" , l'erreur étant envoyée dans le "catch."</p>
+
+    <h4>Exemple OC ligne 590JS</h4>
+
+    <div id="resulttt"></div>
+
+
+
+
+
+
+    <h1 id="ParralHTTP">Paralléliser plusieurs requêtes HTTP !!!!</h1>
+
+    <p>En gérant de l'asynchrone via :<br/>
+    Les Callbacks,<br/>
+    Les Promesses et <br/>
+    Async/Await.<br/>
+    Ainsi, nous pouvons faire deux requêtes en parrallèle suivit d'une requête en séquence.</p>
+
+    <h3 id="EnchCall">Enchaîner les requêtes avec les callbacks</h3>
+
+    <p>Nous allons ici vooir un exemple de 2 requêtes en parallèle suivies d'une requête en séquence. Attention, il est possible de s'y perdre devant la complexité.
+        Nous avons alors accès à deux fonctions ("get" et "post") faisant une requête "GET" et une requête "POST". Elles ont en paramètres :
+        <ul>
+            <li>L'URL de la requête</li>
+            <li>Une callback à éxecuter quand nous avons le résultat (avec une variable d'erreur en premier paramètre).</li>
+        </ul>
+    L'exemple se présente comme suit :<br/><br/>
+    <div class="Code2">
+        var GETRequestCount = 0;<br/>
+        var GETRequestResults = [];<br/><br/>
+
+        function onGETRequestDone(err, result) {<br/>
+        &nbsp;    if (err) throw err;<br/><br/>
+    
+        &nbsp;    GETRequestCount++;<br/>
+        &nbsp;    GETRequestResults.push(result);<br/><br/>
+    
+        &nbsp;    if (GETRequestCount == 2) {<br/>
+        &emsp;        post(url3, function(err, result) {<br/>
+        &emsp;&emsp;            if (err) throw err;<br/><br/>
+            
+        &emsp;&emsp;            // We are done here !<br/>
+        &emsp;        });<br/>
+        &nbsp;    }<br/>
+        }<br/><br/>
+
+        get(url1, onGETRequestDone);<br/>
+        get(url2, onGETRequestDone);
+    </div>
+    </p>
+
+    <p>Pour exécuter deux requêtes "GET" en même temps, nous pouvons appeler deux fois la fonction get(). Cette fonction étant asynchrone, elle ne bloquera pas l'exécution du code.<br/>
+    La deuxième fonction get() sera appelée alors que la première n'est pas encore finie. Ainsi, nous obtenon deux requêtes en parallèle.<br/><br/>
+    Nous voulons par la suite exécuter une requête "POST" une fois les 2 requêtes "GET" terminées et pas avant !! <br/><br/>
+    pour se faire, nous devons savoir si les requêtes "GET" sont terminées. La variable "GETRequestCount" sert donc à cela. On l'incrémente dans le callback. Dès qu'on atteint 2 (requêtes "GET")
+    on va exécuter la requête "POST".</p>
+
+    <h3 id="EnchProm">Enchaîner les requêtes avec les Promises</h3>
+
+    <p>Nous avonc la fonction suivante :<br/><br/>
+    <div class="Code2">
+        Promise.all([get(url1), get(url2)])<br/>
+        &nbsp;.then(function(results) {<br/>
+        &emsp;return Promise.all([results, post(url3)]];<br/>
+        &nbsp;})<br/>
+        &nbsp;.then(function(allResults) {<br/>
+        &emsp;// We are done here !<br/>
+        &nbsp;});<br/><br/>
+    </div>
+    nous avons ici accès à deux fonctions ("get" et "post") faisant une requête "GET" et une requête "POST" quand on leur passe un paramètre l'URL de la rquête.<br/>
+    Ces fonctions retournent une "Promise" avec le résultat de la requête.<br/><br/>
+    "Promise.all" prend en paramètre une liste de "Promise" (Il peut s'agir de simples valeurs transformées en Promise résolues).<br/><br/>
+    La fonction "then()" Reçois les résultats de toutes les Promise sous forme d'un tableau.<br/><br/>
+    Pour exécuter la requête "POST", une fois les requêtes "GET" terminées, nous l'exécutons dans la fonction "then()".  </p>
+    <p>/!\/!\/!\ Dans la fonction "then()", nous faisons encore une fois appel à la fonction  Promise.all  en lui passant les résultats des requêtes "GET" et notre requête "POST". 
+        Étant donné que "Promise.all" considère les simples valeurs comme des  Promise  résolues, cela nous permet, dans le prochain "then()", 
+        de récupérer une liste qui contient les résultats des requêtes "GET" et le résultat de la requête "POST": <strong>"allResults = [ [ getResult1, getResult2 ], postResult ]"</strong>.
+        /!\/!\/!\
+    </p>       
+    
+    <h3 id="EnchAsAw">Enchaîner les requêtes avec async/await</h3>
+
+    <p>Encore une fois, nouq allons commencer avec un exemple :<br/><br/>
+    <div class="Code2">
+        async function requests() {<br/>
+        &nbsp;    var getResults = await Promise.all([get(url1), get(url2)]);<br/>
+        &nbsp;    var postResult = await post(url3);<br/>
+        &nbsp;    return [getResults, postResult];<br/>
+        }<br/>
+        
+        requests().then(function(allResults) {<br/>
+        &nbsp;    // We are done here !<br/>
+        });<br/>
+    </div><br/><br/>
+    Pour cet exemple, nous avons encore une fois accès à  2 fonctions "GET et "POST" qui font une requête "GET" et une requête "POST". Ces fonctions sont asynchrones avec le mot clé "async".<br/><br/>
+    La fonction "Promise.all" est ici car c'est comme ça que l'on peut exécuter des fonctions asynchrones en parallèle (async est une Promise en arrière-plan).<br/><br/>
+
+    Par contre, ici, nous utilisons "await" devant "Promise.all" afin d'attendre la fin de l'exécution des 2 requêtes "GET", puis nous utilisons "await" devant la requête "POST" afin d'attendre son résultat. 
+    Puis nous renvoyons un tableau avec tous les résultats.<br/><br/>
+
+    Lorsque nous appelons la fonction "requests()", ici, nous utilisons "then()" pour récupérer tous les résultats (mais nous aurions aussi pu utiliser "await" au sein d'une autre fonction avec le mot clé "async").
+    </p>
+
+
+    <h3>Exemple sur internet pour les promesses ligne 650 JS</h1>
+    <p>Se référer à <a href="Promises/index.html" target="_blank">Ceci</a></p>
+
+
+    <h1 id="OptCod">Optimiser le code</h1>
+
+
+    <p>Via : Le Linter, le Minifier, le bundler et le transpiler.</p>
+
+    <h3 id="Linter">Le Linter</h3>
+
+    <p>Programme qui va analyser le code et détecter les erreurs de syntaxes (variables non utilisées, non existantes, mauvaise orga du code, non respect des règles,...)<br/>
+        Le JavaScript étant un langage non compilé, on voit les erreurs de syntaxe du code que lors de l'exécution. 
+        C'est-à-dire : si une des fonctions utilise une variable qui n'est pas définie, on le saura que lorsque la fonction sera exécutée. 
+        Ainsi, avec fonctions peu utilisées, il est facile de laisser des erreurs "d'inattention" passer en production.<br/>
+        Un linter peut aider à régler ces erreurs avant que les utilisateurs n'en subissent les conséquences (les tests sont aussi de très bon moyens complémentaire 
+        pour éviter les erreurs). Il pourra aussi aider à optimiser le code et aide a définir des bonnes pratiques d'écriture de code lorsque l'on travaille en équipe !
+        <a href="https://www.jslint.com/" target="_blank">JSLint</a><a href="https://eslint.org/" target="_blank">ESLint</a></p>
+
+    <h3 id="Minifier">Le Minifier</h3>
+
+    <p>
+        Le code JavaScript est chargé par le navigateur. Cela signifie que le navigateur va demander au serveur le code JS pour l'exécuter. 
+        Ainsi, moins le code sera lourd (en termes de taille de fichier), plus le navigateur pourra le récupérer et le charger rapidement.<br/>
+        Un minifier est un programme responsable de la <strong>minification</strong> du code. Il va essayer de rendre le code le plus léger 
+        possible en retirant les espaces et retours à la ligne inutiles, il renomme les variables avec des noms plus courts, supprime le code non utilisé, 
+        supprime les commentaires, optimise certains bouts de code pour les réécrire avec une syntaxe plus légère, etc.<br/>
+        La minification du code n'est pas à négliger, si un site web a beaucoup de trafic, c'est autant de requêtes qui sont faites pour récupérer le code. 
+        Chaque octet pour alléger la charge des serveurs et donner aux utilisateurs une réponse la plus rapide possible !<br/>
+
+        <a href="https://github.com/srod/node-minify" target="_blank">node-minify</a> <a href="https://github.com/mishoo/UglifyJS#readme" target="_blank">UglifyJS</a>
+    </p>
+
+    <h3 id="bundler">Le bundler</h3>
+
+    <p>
+        Il est important de réduire au maximum le nombre de fichiers qui composent notre code !
+
+        C'est le rôle du bundler. Il va se charger de packager le code pour qu'il tienne dans un seul fichier. 
+        Ainsi, on continue à coder dans plusieurs fichiers pour plus de clarté, mais le navigateur n’aura besoin de charger d’un seul fichier lorsqu’un 
+        visiteur ira le site.
+        <a href="https://webpack.js.org/" target="_blank">webpack</a>
+    </p>
+
+    <h3 id="Transpiler">Le transpiler</h3>
+
+    <p>
+        JavaScript évolue. À l'heure actuelle, nous en sommes à la version ECMAScript 2018 (ES9) et la version ECMAScript 2015 (ES6) n'est plus supportée dans son intégralité tous les navigateurs. 
+        Et c'est bien dommage, car les nouvelles versions peuvent offrir des choses intéressantes ("async"/"await" par exemple).<br/>
+        Depuis la publication de cette mise à jour, JavaScript a sorti la version ECMAScript 2021 (ES12). À priori la version ECMAScript 2018 (ES9) reste supportée par la plupart des navigateurs.<br/>
+        
+        Pour coder avec la dernière version de JS en étant compatible avec tout les navigateurs, on utilise le <strong>Transpiler</strong>
+
+        <a href="https://babeljs.io/">Babel</a>
+    </p>
+
+
+    <h1 id="GerDep">Gérer les dépendances</h1>
+
+    <p>NPM, gestionnaire de paquet qui vont permettre de télécharger des modules. Une foie le projet initialiser, nous pouvons y inclure nos modules.</p>
+
+    <p>NPM = Package Manager => Programme permettant une installation facile des modules JS. (incluant les modules précédent)<br/>
+        Un module est un bout de code écrit par quelqu'un et qui résout une problématique commune à beaucoup de développeurs : 
+        comme un parser XML, un générateur d'uuid (des identifiants uniques), un router, un framework de rendu HTML, etc.<br/><br/>
+    </p>
+
+    <h3>Initialiser un projet :</h3>
+
+    <p>
+        NPM nécessite un fichier nommé <strong>package.json</strong> afin d'avoir des informations sur vle projet : (son nom, sa version, les modules à installer, etc.)<br/>
+
+        On le créer manuellement ou on utilise la commande suivante pour le créer plus facilement :<br/>
+        <div class="Code2">npm init</div>
+    
+    </p>
+
+    <h3 id="InstallMod">Installer un module</h3>
+
+    <p>
+        On entre :<br/>
+        <div class="Code2">npm install < module_name > --save-dev</div><br/>
+        "--save-dev" => On souhaite que NPM sauvegarde cette dépendance dans le fichier<br/>
+        "package.json" => dépendance de développement<br/>
+        "--save" => ajoute la dépendance en tant que dépendance de production.<br/><br/>
+        La première fois que l'on clone le projet depuis un "repository git", on peut exécuter<br/>
+        <div class="Code2">npm install</div>
+        Cette commande installe toutes les dépendances du projet qui ont été ajoutées dans le fichier "package.json". Ce fichier est très utile pour 
+        mémoriser et installer tous les modules dont dépend le projet !
+    </p>
+
+    <h1 id="CompetOpt">Compiler et optimiser du code</h1>
+
+    <p>Installation de WebPack => <br/>
+        <div class="Code2">npm install webpack webpack-cli --save-dev</div><br/>
+        Les différents éléments de notre projet se trouvent <a href="Projet/index.html">ici, à la racine</a><br/><br/>
+        Voici la liste des fichiers :<br/>
+        <div class="Code2">projet<br/>
+            |- package.json<br/>
+            |- index.html<br/>
+            |- src<br/>
+            &nbsp;    |- index.js<br/>
+            &nbsp;    |- query.js</div><br/>
+    </p>
+
+
+    <p>Nous créons maintenant, un fichier nommé "webpack.config.js" à la racine de notre projet. Fichier qui servira à configurer <strong>Webpack</strong><br/>
+    Il ne faut pas hésiter à lire ce fichier pour se rendre compte qu'il nous indique principalement que Webpack va se servir de notre
+    "./src/index.js" comme point d'entrée de notre application et bundler notre code dans un fichier final : ""./dist/app.bundle.js" 
+    ("[name]" étant une variable qui sera remplacée ici par "app", car c'est le nom que l'on a indiqué pour notre fichier "index.js").<br/><br/>
+    Il ne nous reste qu'à exécuter Webpack, pour se faire, nous ajoutons dans notre "package.json" et ajouter les "scripts": {...} suivants :<br/>
+    <div class="Code2">
+        "scripts": {<br/>
+        &nbsp;    "test": "...",<br/>
+        &nbsp;    "build": "webpack"<br/>
+        }<br/>
+    </div><br/>
+
+    Tout ce qui se trouve dans "scripts" peut être exécuté avec la commande <strong>"npm run < script_name >"</strong>. 
+    Ainsi, nous pouvons exécuter "npm run build" qui va exécuter la commande  webpack .<br/>
+
+    Pourquoi ne pas exécuter directement la commande "webpack" ? Eh bien, parce qu'en réalité cette application se trouve dans le dossier  
+    "./node_modules/.bin/webpack". Or, l'avantage de NPM est qu'il va automatiquement chercher dans ce dossier pour exécuter des commandes, 
+    ainsi on s'épargne le chemin entier.
+    </p>
+
+    <p>On compile donc le projet avec ;<br/>
+        <div class="Code2">npm run build</div><br/>
+        Nous avons alors apparition d'un fichier "app.bundle.js" généré dans un dossier "dist/" => Package en un fichier à partir de 2 (index.js et "query.js").
+        <br/>
+        Webpack à su où chercher les fichiers à partir de index.js à l'aide des "import" et "export". Permettent respectivement d'importer un autre fichier 
+        (appelé un module) et d'exporter des choses (fonctions, variables...).<br/><br/>
+
+        En effet, dans "index.js", nous avons importé le module "query.js" sous le nom "retrieveContent".<br/>
+        Dans "query.js", nous exportons "retrieveContent" (disponible à l'import). Ainsi, quand Webpack analyse le code, il retrouve toutes les dépendances 
+        et se crée un graph en interne afin d'être capable de tout remettre dans l'ordre en un seul fichier.<br/><br/>
+        Par la suite, nous utilisons "async" et "await" (/!\qui sont apparus dans une version récente de JavaScript et que tous les navigateurs ne supportent pas encore./!\) 
+        Ainsi, en fonction du navigateur, le code affichera une erreur. <br/>
+        Nous utilisons alors un transpiler afin de rendre notre code JavaScript compatible avec les navigateurs les moins récents !
+    </p>
+
+    <h3>Transpiler avec Babel !</h3>
+
+    <p>
+        L'installer :<br/>
+        <div class="Code2">npm install --save-dev babel-loader @babel/core @babel/preset-env babel-polyfill</div><br/><br/>
+
+        Nous allons ajouter Babel à la configuration de Webpack. Pour cela, il faut y ajouter ce qu'on appelle des <strong>"rules"</strong>. Les "rules" 
+        sont des règles de Webpack indiquant les loaders à utiliser pour les types de fichiers que l'on souhaite.<br/>
+        Cela veut dire que dès que l'on va importer un module dans notre code, Webpack va regarder dans la liste des "rules" s'il y en a une qui correspond 
+        à ce type de fichier, et il va lui appliquer les loaders qui correspondent.<br/><br/>
+
+        Dans notre cas, nous exécutons Babel pour tous les fichiers JavaScript de notre projet (sauf ceux qui se trouvent dans le dossier "node_modules", 
+        car ce sont les dépendances NPM et nous ne sommes pas censés modifier leur code).<br/><br/>
+
+        Nous modifions alors notre "webpack.config.js" pour y ajouter la partie "module".<br/><br/>
+
+        Nous passons des options aux loaders. Ainsi, pour Babel, on peut lui demander de charger d'autres plugins pour gérer des syntaxes qui ne 
+        sont encore que des propositions pour de futures versions de JavaScript. Ici, nous chargeons le preset de base qui va nous permettre de transpiler notre code.<br/><br/>
+
+        Nous remarquons aussi que nous avons ajouté une entrée dans l'objet "entry:" => polyfill: "babel-polyfill" . Cela veut dire que lorsque l'on compile notre code, 
+        deux fichiers vont être générés : notre code depuis notre fichier "index.js" et le polyfill de Babel. 
+        Le polyfill permet à Babel d'apporter des modifications au code lors de son exécution. 
+        Cela peut être nécessaire pour certaines choses, et c'est le cas de "async"/"await". Afin de prendre en compte ce 
+        fichier de polyfill, il va falloir mettre à jour le fichier "index.html" afin de le charger aussi (avant notre code).<br/> 
+        Index.html devient :<br/>
+        <div class="Code2">
+            < !doctype html><br/>
+            < html><br/>
+            &nbsp;    < head><br/>
+            &emsp;        < title>My project</title><br/>
+            &nbsp;    < /head><br/>
+            &nbsp;    < body><br/>
+            &emsp;        < script src="./dist/polyfill.bundle.js"></script><br/>
+            &emsp;        < script src="./dist/app.bundle.js"></script><br/>
+            &nbsp;    < /body><br/>
+            < /html><br/>
+        </div><br/>
+
+        Avec ça, tous les navigateurs devraient afficher la page et exécuter correctement le code généré par la commande "npm run build".
+    </p>
+
+
+    <h3>Webpack serve</h3>
+
+    <p>Notre environnement optimisé nous permet de :
+        <ul>
+            <li>De minifier notre code ;</li>
+            <li>De packager notre code ;</li>
+            <li>De séparer très facilement notre code en plusieurs fichiers afin de bien l'organiser ;</li>
+            <li>D'utiliser très facilement des bibliothèques développées par la communauté grâce à NPM ;</li>
+            <li>De transpiler notre code pour pouvoir utiliser les versions next gen de JavaScript ;</li>
+        </ul>
+
+        Nous avons dorénavent besoin d'un serveur pour tester notre code et qui recharge automatiquement le navigateur dès que nous modifions notre code.<br/>
+        Pour se faire, nous allons utiliser webpack serve. via le module :<br/>
+        <div class="Code2">npm install webpack-serve --save-dev</div><br/>
+        Ensuite, ajouter une nouvelle commande au fichier "package.json" : <br/>
+        <div class="Code2">
+            "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1",
+                "build": "webpack",
+                "start": "webpack serve"
+            }
+        </div> <br/>
+        
+        "start" est une commande spéciale car elle est exécutée avec un simple "npm start" (sans "run" après "npm").
+
+        Enfin, webpack serve va considérer que les fichiers générés par Webpack sont à la racine du server, il nous faut donc mettre à jour notre fichier "index.html" :<br/><br/>
+
+        <div class="Code2">
+            < !doctype html><br/>
+            < html><br/>
+            &nbsp;    < head><br/>
+            &emsp;        < title>My project</title><br/>
+            &nbsp;    < /head><br/>
+            &nbsp;    < body><br/>
+            &emsp;        < script src="./polyfill.bundle.js"></script><br/>
+            &emsp;        < script src="./app.bundle.js"></script><br/>
+            &nbsp;    < /body><br/>
+            < /html><br/>
+        </div><br/>
+
+        Une fois fait, nous lançons le serveur via :<br/>
+        <div class="Code2">npm start</div><br>
+
+        disponibleà l'adresse <a href="http://localhost:8080/" target="_blank">http://localhost:8080/</a><br/><br/>
+
+        Ici, problème avec le serveur local
+    </p>
+    
+
+
+
+
+</body>
+</html>

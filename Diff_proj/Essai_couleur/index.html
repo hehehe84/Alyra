@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Liaison JS</title>  
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style2.css">
+    </head>
+<body>
+
+    <button id="btn1">Bleu</button>
+    <button id="btn2">Rouge</button>
+    <button id="btn3">Jaune</button>
+    <button id="btn4">Orange</button>
+    <button id="btn5">Noir</button>
+
+    <div id="ChgtClr">
+        <label for="day-input">Number of days</label>  <!--Ici, nous lions sur notre JS le nombre de jours dans la constante "day-input"-->
+        <input id="day-input" type="number" min="1"/> <!--L'id sert à créer un lien, "type" => nous désirons l'entrée d'un chiffre, "min="1"" le nombre de jour est au moins de 1-->
+        <button id="calculate-button">Calculate !</button> <!--Ce bouton va calculer ce que l'on souhaite quand nous allons cliquer dessus-->
+        <p id="hours"></p>
+        <p id="minutes"></p>
+        <p id="seconds"></p>
+    </div>
+
+    <div onclick="changeColor(this)" id="changeColor">
+        Tap me to change my Color        
+    </div>
+
+    <p id="demo">Hello World !</p>
+    <button type="button" onclick="myFunc()">Change Value</button>
+
+    <p id="demo2" class="demo2">Hello World !</p>
+    <button type="button" onclick="myFunc2()">Change Style</button><br/><br/>
+
+    <p id="demo3" class="demo3">Hello World !</p>
+    <button type="button" onclick="show()">Show</button>
+    <button type="button" onclick="hide()">Hide</button>
+    <br/><br/><br/>
+
+
+    <button type="button" onclick="funkyFunc()" id="Hide">Combien font la somme des variables cachées ?</button>
+
+    <div id="Somme">
+        <label for="nombre1">Premier Nombre à saisir</label>
+        <input id="nombre1" type="number" min="1"/><br/>
+        <label for="nombre2">Second nombre à saisir</label>
+        <input id="nombre2" type="number" min="1"/><br/>
+        <button id="Result">Somme =</button>
+        <p id="Sommes"></p>
+    </div>
+
+    <p>Par rapport aux additions et opérateurs mathématiques de bases, il peut être intéressant d'aller sur 
+    <a href="https://developer.mozilla.org/fr/docs/Learn/JavaScript/First_steps/Math" title="opérateurs" target="_blank"> ce lien</a>.<br/>
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/A_first_splash" title="exo" target="_blank">celui-ci</a> est pas mal pour un exo test</p>
+
+
+
+
+
+
+
+
+
+
+
+    <p>Il faut se méfier avec les tableaus, les variables peuvent changer, il ne s"agit en aucun cas d'une science exacte ex sur le script.<br/>
+    On retrouve des explications plus intéressantes sur 
+    <a href="https://openclassrooms.com/fr/courses/6175841-apprenez-a-programmer-avec-javascript/6278664-regroupez-vos-donnees-avec-les-tableaux-et-les-objets" 
+    title="array" target="_blank">ce lien</a></p>
+
+    <h1>On se trouve maintenant dans une section pour exécuter JS facilement.</h1>
+
+    <p>On parle des conditions appropriées pour le déroulement d'un programme à savoir les fonctions : if/else/switch<br/>
+    <br/>
+    En JS, on utilise des booléens pour les instructions if et else. Un exemple est dispo dans la partie JS. Ligne 300</p>
+
+<p id="Compa">Nous pouvons utiliser des valeurs de comparaisons comme suit : </p>
+
+<ul>
+    <li> "<" inférieur à ;</li>
+    <li> "<=" inférieur ou égal à ;</li>
+    <li> "==" égal à ; </li>
+    <li>">=" supérieur ou égal à ;</li>
+    <li> ">" supérieur à ; </li>
+    <li>"!=" différent de ;</li>
+</ul>
+
+
+<p>Maintenant, nous allons faire un petit exo openclassrooms : </p>
+
+<h1 id="VotreAge">Quel est votre age?</h1>
+<input id="age" type="text" placeholder="entrez votre age">
+<input id="bouton" type="button" value="confirmer">
+<h2 id="message"></h2>
+
+
+<p>La fonction "parseInt()" analyse une chaîne de caractère fournie en argument et renvoie un entier exprimé dans une base donnée.<br/>
+Pour creuser cette fonction, il est intéressant de se rendre sur <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/parseInt" title="parseInt" target="_blank">ce lien </a></p>
+
+<h2 id="ValEgalite"> L'égalité == vs === </h2>
+
+<p>Il y a deux façons de vérifier si deux valeurs sont égales en JavaScript :  ==  et  ===, aussi appelées égalité simple et égalité stricte :<br/>
+L'égalité simple "==" vérifie la valeur, mais pas le type ! => 5 == "5" => TRUE <br/><br/>
+L'égalité stricte "===" vérifie à la fois la valeur et le type => 5 === "5" => FALSE <br/>
+Etant donné que ici, nous comparant un number à un string<br/><br/>
+Nous avons exactement les mêmes relations entre "!=" et "!=="</p>
+
+<h2 id="opLog">Parlons maintenant des conditions et des portes logiques</h2>
+
+<ul>
+    <li>"&&" ET logique</li>
+    <li>"||" OU logique</li>
+    <li>"!" NON logique</li>
+</ul>
+<p>RDV ligne 390 du code JS. Exemple tiré du précédent ci-dessous :</p>
+
+
+<h1 id="ageCtrl">Quel est votre age 2?</h1>
+<div id="control">
+  <input type="checkbox" id="parental" name="parental" checked>
+  <label for="parental">Contrôle parental activé</label>
+</div>
+<input id="age2" type="text" placeholder="entrez votre age">
+<input id="bouton2" type="button" value="confirmer">
+<h2 id="message2"></h2>
+
+
+<h2>Scope Block</h2>
+<p>un bloc va être écrit entre deux accolades, il est intéressant de déclarer un message vide avant de pouvoir l'afficher : <br/><br/>
+let userLoggedIn = true;<br/>
+let welcomeMessage = ''; // déclarer la variable ici<br/>
+<br/>
+if (userLoggedIn) {<br/>
+    welcomeMessage = 'Welcome back!'; // modifier la variable extérieure<br/>
+} else {<br/>
+    welcomeMessage = 'Welcome new user!'; // modifier la variable extérieure<br/>
+}<br/>
+<br/>
+console.log(welcomeMessage); // imprime 'Welcome back!'<br/><br/>
+
+Le résultat n'est positif qu'à l'aide de : let welcomeMessage = '';<br/>
+Autrement, il renvoie un message d'erreur.
+
+</p>
+
+<h2>Utilisation SWITCH</h2>
+
+<p>rdv ligne 440 JS</p>
+
+
+
+<h1 id="boucle">Implémentation des boucles !</h1>
+
+<p>Ligne 500 JS</p>
+
+<h1 id="ErrCourantes">Les types d'erreurs</h1>
+
+<ul>
+    <li>Erreurs de synthaxe :  erreurs dans l'utilisation de JavaScript : fautes d'orthographe, crochets manquants, nombre de guillemets incorrect, etc. ;</li>
+    <li>Erreurs de logique : Problèmes de logique dans le programme. Ce type d'erreur ne seront pas affiché par la console ou le terminal et peuvent conduire à des boucles infinie. <ul>
+        <li>affectation de valeur erronnée à une variable.</li>
+        <li>mélanger des conditions dans une boucle "if"</li>
+        <li>mauvais ordre dans l'écriture des lignes ou des blocs de code.</li>
+    </ul></li>
+    <li>Erreurs d'éxecution : Mauvaise exécution lié à un aspect externe à l'application. Ce type d'erreur est commune et doit être prise en compte dans le code.<br/>
+    exemple ligne 568 du code JS, avec une boucle if ou une fonction "try" ou "catch" </li>
+</ul>
+
+</body>
+
+</html>
+

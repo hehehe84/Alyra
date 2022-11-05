@@ -1,0 +1,662 @@
+/*P */       
+/*{*/ 
+/*	color: blue; */ /* les couleurs des paragraphes sont en bleu */
+/*}*/ 
+/*h1*/
+/*{*/
+/*	color: red;  les couleurs des titres h1 sont en rouge */
+/*}*/
+h3, h2 
+{
+	color: green; /* les couleurs des titres h2 et h3 sont en vert */
+}
+
+.introduction 
+{
+	color: black;      /* les paragraphes qui ont la classe : <p class="introduction"> XXXXX </p> sont écrit en noir, pareille pour les titres */
+}
+
+#particulier
+{
+	color: yellowgreen;
+}
+
+.travail
+{
+	color: hotpink;
+}
+
+.coucou
+{
+	color: brown;
+}
+
+/* On peut utiliser : "*""      */
+/*                    "{""		 */
+/*						    "color:  blue;""                 */
+/*					  }		 Pour référencer tout les éléments de la page." */
+
+
+h4 + p
+{
+	color: blue;
+}
+
+h1 em /*toutes les balise em se trouvant dans h1*/
+{
+	color: darkgreen;
+}
+
+p em /*toutes les balise em se trouvant dans les p*/
+{
+	color: yellowgreen;
+}
+
+p strong
+{
+	color: deeppink;
+}
+
+p
+{
+	font-size:  1em;
+}
+
+p
+{
+	font-family: 'ambleregular', Impact, "Arial Black", Arial, Verdana;
+}
+
+#aaa
+{
+	font-family: Arial;
+}
+
+#bbb
+{
+	font-family: Arial Black;
+}
+
+#ccc
+{
+	font-family: Comic Sans MS;
+}
+
+#ddd
+{
+	font-family: Courier New;
+}
+
+#eee
+{
+	font-family: Georgia;
+}
+
+#fff
+{
+	font-family: Impact;
+}
+
+#ggg
+{
+	font-family: Times New Roman;
+}
+
+#hhh
+{
+	font-family: Trebuchet MS;
+}
+
+#iii
+{
+	font-family: Verdana;
+}
+
+
+
+/* ICI, on utilise la police amble, téléchargée sur font squirrel et on colle lu fichier css trouvée dans le zip de celle ci :*/
+@font-face {
+    font-family: 'ambleregular';
+    src: url('Font/Amble-Regular-webfont.eot'); /*J'ai remplacé toutes les sources du CSS pour prendre la police régular que j'ai placé dans un dossier font au même endroit que mon CSS.*/
+    src: url('Font/Amble-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('Font/Amble-Regular-webfont.woff2') format('woff2'),
+         url('Font/Amble-Regular-webfont.woff') format('woff'),
+         url('Font/Amble-Regular-webfont.ttf') format('truetype'),
+         url('Font/Amble-Regular-webfont.svg#ambleregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+.Italique
+{
+	font-style: italic;
+}
+
+.gras
+{
+	font-weight: bold;
+}
+
+.Hybride
+{
+	font-style: italic;
+	font-weight: bold;
+}
+
+.souligner
+{
+	text-decoration: underline;
+}
+
+.surligner
+{
+	text-decoration: overline;
+}
+
+.barrer
+{
+	text-decoration: line-through;
+}
+
+.gauche
+{
+	text-align: left; /*valeur par défaut */
+}
+
+.milieu
+{
+	text-align: center;
+}
+
+.droite
+{
+	text-align: right;
+}
+
+.justifie
+{
+	text-align: justify;
+}
+
+.flottantg
+{
+	float: left;
+}
+
+.flottantd
+{
+	float: right;
+}
+
+.autreparagraphe
+{
+	clear: left;
+}
+
+.colyg
+{
+	color: yellowgreen;
+}
+
+.colcust
+{
+	color: rgb(250, 96, 204);
+}
+
+/*body     */
+/*{      */
+/*	background-color: lightyellow;     */
+/*}      */
+
+body 
+{
+	background: url("soliel.png")  /*fixed*/ no-repeat top right, url("neige.jpg");
+} 
+
+/*body*/
+/*{*/
+/*	background-image: url("neige.jpg");*/
+/*	background-attachment: fixed;*/
+/*	background-repeat: no-repeat;*/
+/*	background-position: top right;*/
+/*}*/
+
+/*body */
+/*{*/
+/*	background: url("neige.jpg") fixed no-repeat top right;*/
+/*} */
+
+mark
+{    /* La couleur de fond prend le pas sur celle de toute la page */
+    background-color: red;
+    color: black;
+}
+
+.essaiesurtrans
+{
+	background-color: black;
+	color: white;
+	opacity: 0.3;
+}
+
+.transpCLR
+{
+	background-color: rgba(255, 0, 0, 0.5);
+}
+
+.bordimp
+{
+	border: 3px blue solid;
+}
+
+.borddot	
+{
+	border: 3px darkred dotted;
+}
+
+.bordbas
+{
+	border-bottom: 10px navy dashed;
+}
+
+.bordright	
+{
+	border-right: 6px magenta double ;
+}
+
+.bordleft
+{
+	border-left: 2px black groove;
+}
+
+.bordarrond
+{
+	border: 3px red DASHED;
+	border-radius: 20px;
+}
+
+.bordelliptic
+{
+	border: 4px greenyellow outset	;
+	border-radius: 20px / 10px;
+}
+
+.bordombre
+{
+	border: 4px grey solid ;
+	border-radius: 20px / 10px;
+	box-shadow: 6px 6px 0px black;
+}
+
+
+.bordombreadouc
+{
+	border: 4px grey solid ;
+	border-radius: 20px / 10px;
+	box-shadow: 6px 6px 6px black;
+}
+
+.bordertexte
+{
+	border: 3px red solid ;
+	border-radius: 20px / 10px;
+	text-shadow: 6px 6px 6px black;
+}
+
+.bordertex
+{
+	text-shadow: 6px 6px 6px black;
+}
+
+.bordertexpasdoux
+{
+	text-shadow: 6px 6px 0px black;
+}
+
+.bordertextresdoux
+{
+	text-shadow: 6px 6px 20px black;
+}
+
+.bordresume
+{	
+	background-color: orange;
+	color: blue;
+	border: 3px red solid ;
+	border-radius: 20px / 5px;
+	box-shadow: 6px 6px 6px black;
+}
+
+a /*liens par défaut (non survolés)*/
+{
+	text-decoration: none;
+	color: darkred;
+	font-style: italic;
+}
+
+/* Les apparence dynamiques */
+
+a:hover
+{
+	text-decoration: underline;
+	color: gold;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.dyna:hover
+{
+	border-left: 3px double	black;
+}
+
+a:active
+{
+	color: lightyellow;
+}
+
+a:focus /*Permet de laisser une réminiscence sur un lien cliqué*/
+{
+	background-color: #77FF88;
+}
+
+a:visited
+{
+	color: white;
+}
+
+
+.blocktitre
+{
+	background-color: gold;
+	width: 300px;
+	height: 70px;
+}
+
+.blockparagraphe
+{
+	text-align: justify;
+	width: 50% ; /*La largeur est de 50% de la fenêtre*/
+	min-width: 300px; /*Sauf qu'elle est de 300px min*/
+	max-width: 600px; /*et de 600px maximum*/
+	/*    Soit 300px < largeur de 50% < 600px   */
+	height: 100%; /*La hauteur est de 50% de la fenêtre*/
+	/*min-height: ;*/
+	/*max-height: 50%;*/
+
+	/*Nous introduisons les marges extérieurs :*/
+
+	margin: 50px; /*Marges extérieurs 50px*/
+	/*on peut utiliser "margin-left""right""top",... pour margin que d'un coté*/
+
+	/*Nous introduisons les marges intérieurs :*/
+	padding: 12px; /*Marges intérieurs 50px*/
+	/*Comme pour margin, on peut utiliser "padding-top",right,...*/
+
+	border: 3px red solid ;
+}
+
+.blockpers
+{
+	text-align: justify;
+	width: 30%;
+	height: 30%;
+	margin: 5px 10px 20px 0;
+	padding: 1px 10px 100px 1000px;
+	border: 2px grey double;
+}
+
+.blockauto
+{
+	width: 500px;
+	margin: auto;
+	border: 2px black dotted;
+	word-wrap: break-word;
+	text-align: justify;
+}
+
+.blockdefil
+{
+	width: 200px;
+	height: 350px;
+	margin-left: 50px;
+	border: 1px salmon solid;
+	overflow: auto; /*auto*/
+	text-align: justify;
+}
+
+
+
+
+/*ICI, nous allons aborder la partie Flexblock*/
+/*Préliminaires*/
+
+#conteneurnonflex
+{	
+	border: 2px solid black;
+	height: 450px;
+}
+
+
+#conteneur
+{
+	display: flex;
+	
+	/*flex-direction: column-reverse;    /* ici, cette ligne inverse l'odre des colonnes (on a une rotation
+	à 180 degré par rapport à la disposition en colonne initiale.) */
+	
+	/*flex-direction: row-reverse;    /* ici, cette ligne lignes (on a une disposition des couleurs sur la ligne
+	totalement inversée, les blocs sont renversés sur la droite.) */
+	
+	flex-wrap: wrap;/* Les blocs vont à la ligne quand on réduit la fenêtre et qu'ils n'ont plus de place */
+	
+	/*Il existe aussi l'option wrap-reverse. Les blocs vont à la ligne dans l'odre inverse.*/
+	
+	border: 2px solid black;
+	justify-content: space-around;
+
+	height: 200px; /*ligne crée pour pouvoir jouer avec le positionnement de nos blocs.*/
+	align-items: center; 
+}
+
+.element
+{
+	width: 150px;
+	height: 150px;
+}
+
+.element:nth-child(1)
+{
+	background-color: orange;
+}
+
+.element:nth-child(2)
+{
+	background-color: blue;
+}
+
+.element:nth-child(3)
+{
+	background-color: red;
+}
+
+
+/*Exemple de l'élément unique*/
+
+#cconteneur
+{
+	display: flex;
+	height: 200px;
+	border: 2px solid black;
+}
+
+.eelement
+{
+	width: 150px;
+	height: 100px;
+}
+
+.eelement:nth-child(1)
+{
+	background-color: orange;
+	margin: auto;
+}
+
+/*Exemple pour nos éléments prenant plusieurs lignes*/
+
+#ConteneurMult
+{
+	display: flex;
+	flex-wrap: wrap;
+
+	height: 500px;
+	border: 2px solid black;
+}
+
+.ElementMult
+{
+	width: 150px;
+	height: 100px;
+}
+
+.ElementMult:nth-child(n)
+{
+	background-color: orange;
+}
+
+.ElementMult:nth-child(2n)
+{
+	background-color: black;
+}
+
+.ElementMult:nth-child(3n)
+{
+	background-color: blueviolet;
+}
+
+/*Jouons avec align-content*/
+
+#ConteneurMultcontent
+{
+	display: flex;
+	flex-wrap: wrap;
+	align-content: flex-start;
+
+	height: 500px;
+	border: 2px solid black;
+}
+
+/*Changer l'ordre des boxs*/
+
+#conteneurOrdre
+{
+	display: flex;
+
+	height: 200px; 
+	border: 2px solid black;
+}
+
+.elementOrdre
+{
+	width: 150px;
+	height: 150px;
+}
+
+.elementOrdre:nth-child(1)
+{
+	background-color: orange;
+	order: 3;
+	flex: 2;
+}
+
+.elementOrdre:nth-child(2)
+{
+	background-color: blue;
+	flex: 5;
+	align-self: flex-end;
+}
+
+.elementOrdre:nth-child(3)
+{
+	background-color: red;
+	flex: 1;
+}
+
+
+
+/*Technique du flottant, à utiliser en dernier recours*/
+
+
+.navFlot
+{
+	float: left;
+	border: 1px solid black;
+	width: 150px;
+}
+
+
+.sectionflot
+{
+	border: 1px solid blueviolet;
+	margin-left: 152px;
+}
+
+/*Technique a mettre en relation avec display*/
+
+.afficher
+{
+	display: inline;
+}
+
+.navaff
+{
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid black;
+	width: 150px;
+}
+
+
+.sectionaff
+{
+	display: inline-block;
+	border: 1px solid blueviolet;
+}
+
+/*Positionnement absolu*/
+
+.navabs
+{
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	width: 150px;
+	border: 1px solid black;
+}
+
+
+.sectionabs
+{
+	border: 1px solid blueviolet;
+}
+
+
+
+
+
+td
+{
+	border: 1px solid black;
+}
+
+table
+{
+	border-collapse: collapse;
+	text-align: center;
+}
+
+video
+{
+	height: 200px;
+}

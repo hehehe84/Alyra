@@ -1,0 +1,33 @@
+body, button
+{
+    background-color: #007acc;
+    color: #EFF7F2;
+}
+
+h1,h2,h3{
+    text-align: center;
+}
+
+.border-frame {
+    max-width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border: 2px solid #EFF7F2;
+    margin: 30px;
+    padding: 10px;
+}
+
+#refresh {
+    float: right;
+    margin-right: 20px;
+    font-size: 1.2em;
+    font-weight: 200;
+    padding: 10px;
+}
+
+#refresh:hover {
+    background-color: bisque;
+    cursor: pointer;
+}

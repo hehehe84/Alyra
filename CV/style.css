@@ -1,0 +1,84 @@
+body
+{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9em;
+    display: flex;
+    max-width: 900px;
+    background-color: #E8E8E8;
+    box-shadow: 5px 0px 10px rgb(204, 199, 199);
+    justify-content: space-between;
+}
+
+
+#preferences
+{
+    width: 300px;
+    padding-right: 10px;
+    padding-left: 10px;
+    border: 1px solid orange;
+    background-color: #E1E1E1;
+}
+
+#Principal
+{
+    border: 1px solid orange;
+    width: 600px;
+    background-color: #F1F1F1;
+    padding-left: 10px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+}
+
+#Agen
+{
+    display: flex;
+}
+
+.po {
+    margin-top: 15px;
+}
+
+.inner {
+    height: 100%;
+    background-color:  orange;
+}
+
+
+.cool {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    width: 300px;
+    height: 7px;
+}
+
+
+
+#Photo{
+    text-align: center;
+    padding-top: 30px;
+}
+
+#Contact img{
+    position: absolute;
+}
+
+#Contact p{
+padding-left: 30px;}
+
+#Presentation
+{
+    padding-bottom: 5px;
+}
+
+hr.light
+{
+    border-top: 1px double #8b8963;
+    width: 90%;
+    margin-top: .8rem;
+    margin-bottom: 1rem;
+
+}
+
+.skls{
+    padding-left: 40px;
+}
